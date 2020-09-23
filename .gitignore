@@ -33,5 +33,4 @@ yarn-error.log*
 *.sln
 
 # Hidden files
-.*
-!/.gitignore
+.env*

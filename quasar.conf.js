@@ -77,7 +77,11 @@ module.exports = function (/* ctx */) {
     devServer: {
       https: false,
       port: 8080,
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
+      watchOptions: {
+        aggregateTimeout: 100,
+        poll: 1000
+      }
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
@@ -116,9 +120,9 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'pbbg.com Website',
-        short_name: 'pbbg.com Website',
-        description: 'The definitive website for Persistent Browser-Based Games',
+        name: 'pbbg.com',
+        short_name: 'pbbg.com',
+        description: 'Persistent Browser-Based Games',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

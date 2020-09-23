@@ -34,3 +34,4 @@ yarn-error.log*
 
 # Hidden files
 .env*
+!.env.example

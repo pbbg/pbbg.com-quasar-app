@@ -1,8 +1,8 @@
 {
   "name": "pbbg.com",
   "version": "0.0.1",
-  "description": "The definitive website for Persistent Browser-Based Games",
-  "productName": "pbbg.com Website",
+  "description": "Persistent Browser-Based Games",
+  "productName": "pbbg.com",
   "author": "@FoohonPie & Friends",
   "private": true,
   "scripts": {
@@ -15,10 +15,12 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "core-js": "^3.6.5",
-    "quasar": "^1.0.0"
+    "quasar": "^1.0.0",
+    "vue-instantsearch": "^1.7.0"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
+    "@quasar/quasar-app-extension-dotenv": "^1.0.5",
     "babel-eslint": "^10.0.1",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",

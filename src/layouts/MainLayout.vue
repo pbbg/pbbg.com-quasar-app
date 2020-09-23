@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          pbbg.com
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+<!--        <div>Login</div>-->
       </q-toolbar>
     </q-header>
 
@@ -51,46 +51,22 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
     title: 'Github',
-    caption: 'github.com/quasarframework',
+    caption: 'Help is appreciated!',
     icon: 'code',
-    link: 'https://github.com/quasarframework'
+    link: 'https://github.com/foohonpie/pbbg.com'
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
+    title: 'Discord Chat',
+    caption: 'Come hang out. :)',
     icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    link: 'https://discord.gg/KvwaEqC'
   },
   {
     title: 'Twitter',
-    caption: '@quasarframework',
+    caption: '@pbbgsite',
     icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    link: 'https://twitter.com/pbbgsite'
   }
 ]
 

@@ -1,0 +1,338 @@
+{
+  "results": [{
+    "hits": [{
+      "id": 9,
+      "user_id": null,
+      "name": "Test Algolia Search Results",
+      "slug": "molestiae-repellendus-beatae",
+      "url": "https://www.gerlach.org/aut-et-et-vel-facere-non-nesciunt",
+      "short_description": "Vero a quis rerum quia quia velit. Fuga aut dolore unde doloremque adipisci tempore magnam. Explicabo repudiandae qui hic.",
+      "long_description": null,
+      "ad_square_button": "https://lorempixel.com/125/125/?64104",
+      "approved": 1,
+      "verified": 1,
+      "promoted": 1,
+      "created_at": "2020-09-18 01:12:35",
+      "updated_at": "2020-09-21 19:30:29",
+      "tags": [],
+      "path": "/games/molestiae-repellendus-beatae",
+      "rating": 4,
+      "ratings_count": 2,
+      "latest_review_rating": 3,
+      "latest_review_body": "adfsadfsfsda adfsadfsfsda adfsadfsfsda adfsadfsfsda adfsadfsfsda adfsadfsfsda adfsadfsfsda adfsadfsfsda adfsadfsfsda adfsadfsfsda adfsadf...",
+      "latest_review_name": "foo",
+      "latest_review_updated_at": "September 21, 2020",
+      "latest_review_created_at": "September 21, 2020",
+      "latest_review_user_path": "/users/foo",
+      "objectID": "9",
+      "_highlightResult": {
+        "name": {"value": "Molestiae Repellendus Beatae", "matchLevel": "none", "matchedWords": []},
+        "url": {
+          "value": "https://www.gerlach.org/aut-et-et-vel-facere-non-nesciunt",
+          "matchLevel": "none",
+          "matchedWords": []
+        },
+        "short_description": {
+          "value": "Vero a quis rerum quia quia velit. Fuga aut dolore unde doloremque adipisci tempore magnam. Explicabo repudiandae qui hic.",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    }, {
+      "id": 8,
+      "user_id": null,
+      "name": "Aut Unde Et",
+      "slug": "aut-unde-et",
+      "url": "http://ruecker.com/",
+      "short_description": "Porro optio est consequatur voluptatem dolores. Inventore iusto eos placeat nisi ex accusamus. Qui natus aut ipsam accusantium.",
+      "long_description": null,
+      "ad_square_button": "https://lorempixel.com/125/125/?74507",
+      "approved": 1,
+      "verified": 1,
+      "promoted": 0,
+      "created_at": "2020-09-18 01:12:35",
+      "updated_at": "2020-09-21 19:33:10",
+      "tags": [],
+      "path": "/games/aut-unde-et",
+      "rating": 1,
+      "ratings_count": 1,
+      "latest_review_rating": 1,
+      "latest_review_body": "Magnam pariatur non quia nesciunt molestiae velit qui. Et sunt quibusdam est officia vel blanditiis.\n\nAssumenda omnis ut id enim corrupti...",
+      "latest_review_name": "Dr. Dena Gutkowski",
+      "latest_review_updated_at": "September 21, 2020",
+      "latest_review_created_at": "September 18, 2020",
+      "latest_review_user_path": "/users/dr-dena-gutkowski",
+      "objectID": "8",
+      "_highlightResult": {
+        "name": {"value": "Aut Unde Et", "matchLevel": "none", "matchedWords": []},
+        "url": {"value": "http://ruecker.com/", "matchLevel": "none", "matchedWords": []},
+        "short_description": {
+          "value": "Porro optio est consequatur voluptatem dolores. Inventore iusto eos placeat nisi ex accusamus. Qui natus aut ipsam accusantium.",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    }, {
+      "id": 5,
+      "user_id": null,
+      "name": "Adipisci Doloremque Voluptatibus",
+      "slug": "adipisci-doloremque-voluptatibus",
+      "url": "https://www.armstrong.com/optio-qui-quasi-quis-rerum",
+      "short_description": "Et dolores eum eos provident eum laboriosam. Natus nesciunt et fuga earum quos distinctio. Cum minima eos ducimus vel.",
+      "long_description": null,
+      "ad_square_button": "https://lorempixel.com/125/125/?88513",
+      "approved": 1,
+      "verified": 1,
+      "promoted": 1,
+      "created_at": "2020-09-18 01:12:35",
+      "updated_at": "2020-09-18 01:12:35",
+      "tags": [],
+      "path": "/games/adipisci-doloremque-voluptatibus",
+      "rating": 0,
+      "ratings_count": 0,
+      "objectID": "5",
+      "_highlightResult": {
+        "name": {
+          "value": "Adipisci Doloremque Voluptatibus",
+          "matchLevel": "none",
+          "matchedWords": []
+        },
+        "url": {
+          "value": "https://www.armstrong.com/optio-qui-quasi-quis-rerum",
+          "matchLevel": "none",
+          "matchedWords": []
+        },
+        "short_description": {
+          "value": "Et dolores eum eos provident eum laboriosam. Natus nesciunt et fuga earum quos distinctio. Cum minima eos ducimus vel.",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    }, {
+      "id": 4,
+      "user_id": null,
+      "name": "Id Qui Placeat",
+      "slug": "id-qui-placeat",
+      "url": "http://lehner.com/aspernatur-libero-vel-deserunt-omnis-aut-cumque-ut",
+      "short_description": "Impedit hic ea commodi. At et explicabo natus quia esse. Fuga doloremque voluptate quae accusamus. Illo voluptas veniam ut totam et omnis.",
+      "long_description": null,
+      "ad_square_button": "https://lorempixel.com/125/125/?91249",
+      "approved": 1,
+      "verified": 1,
+      "promoted": 0,
+      "created_at": "2020-09-18 01:12:35",
+      "updated_at": "2020-09-18 01:12:35",
+      "tags": [],
+      "path": "/games/id-qui-placeat",
+      "rating": 0,
+      "ratings_count": 0,
+      "objectID": "4",
+      "_highlightResult": {
+        "name": {"value": "Id Qui Placeat", "matchLevel": "none", "matchedWords": []},
+        "url": {
+          "value": "http://lehner.com/aspernatur-libero-vel-deserunt-omnis-aut-cumque-ut",
+          "matchLevel": "none",
+          "matchedWords": []
+        },
+        "short_description": {
+          "value": "Impedit hic ea commodi. At et explicabo natus quia esse. Fuga doloremque voluptate quae accusamus. Illo voluptas veniam ut totam et omnis.",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    }, {
+      "id": 2,
+      "user_id": null,
+      "name": "Dolor Eos Ipsam",
+      "slug": "dolor-eos-ipsam",
+      "url": "http://crist.biz/amet-placeat-ut-quis-voluptatibus-aut",
+      "short_description": "Dolores aut iure nulla aut autem placeat. Autem rerum corrupti voluptas aut. Voluptas est quasi rerum delectus.",
+      "long_description": null,
+      "ad_square_button": "https://lorempixel.com/125/125/?60183",
+      "approved": 1,
+      "verified": 1,
+      "promoted": 0,
+      "created_at": "2020-09-18 01:12:34",
+      "updated_at": "2020-09-18 01:12:35",
+      "tags": [],
+      "path": "/games/dolor-eos-ipsam",
+      "rating": 0,
+      "ratings_count": 0,
+      "objectID": "2",
+      "_highlightResult": {
+        "name": {"value": "Dolor Eos Ipsam", "matchLevel": "none", "matchedWords": []},
+        "url": {
+          "value": "http://crist.biz/amet-placeat-ut-quis-voluptatibus-aut",
+          "matchLevel": "none",
+          "matchedWords": []
+        },
+        "short_description": {
+          "value": "Dolores aut iure nulla aut autem placeat. Autem rerum corrupti voluptas aut. Voluptas est quasi rerum delectus.",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    }, {
+      "id": 10,
+      "user_id": null,
+      "name": "Ut Dignissimos Omnis",
+      "slug": "ut-dignissimos-omnis",
+      "url": "http://heaney.info/",
+      "short_description": "Dolorem velit ea et repellat dolorem quidem. Alias voluptatum et nihil quibusdam eaque. Aut veniam quis rem minus odio vel.",
+      "long_description": null,
+      "ad_square_button": "https://lorempixel.com/125/125/?72237",
+      "approved": 1,
+      "verified": 1,
+      "promoted": 0,
+      "created_at": "2020-09-18 01:12:35",
+      "updated_at": "2020-09-18 01:12:36",
+      "tags": [],
+      "path": "/games/ut-dignissimos-omnis",
+      "rating": 0,
+      "ratings_count": 0,
+      "objectID": "10",
+      "_highlightResult": {
+        "name": {"value": "Ut Dignissimos Omnis", "matchLevel": "none", "matchedWords": []},
+        "url": {"value": "http://heaney.info/", "matchLevel": "none", "matchedWords": []},
+        "short_description": {
+          "value": "Dolorem velit ea et repellat dolorem quidem. Alias voluptatum et nihil quibusdam eaque. Aut veniam quis rem minus odio vel.",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    }, {
+      "id": 7,
+      "user_id": null,
+      "name": "Natus Accusantium Et",
+      "slug": "natus-accusantium-et",
+      "url": "https://wuckert.org/et-perferendis-laborum-voluptatum-soluta-enim-neque-aliquam.html",
+      "short_description": "Porro voluptas vel eum omnis minus doloremque ad. Molestiae quisquam ad dolor quo non et.",
+      "long_description": null,
+      "ad_square_button": "https://lorempixel.com/125/125/?90328",
+      "approved": 1,
+      "verified": 0,
+      "promoted": 1,
+      "created_at": "2020-09-18 01:12:35",
+      "updated_at": "2020-09-18 01:12:35",
+      "tags": [],
+      "path": "/games/natus-accusantium-et",
+      "rating": 0,
+      "ratings_count": 0,
+      "objectID": "7",
+      "_highlightResult": {
+        "name": {"value": "Natus Accusantium Et", "matchLevel": "none", "matchedWords": []},
+        "url": {
+          "value": "https://wuckert.org/et-perferendis-laborum-voluptatum-soluta-enim-neque-aliquam.html",
+          "matchLevel": "none",
+          "matchedWords": []
+        },
+        "short_description": {
+          "value": "Porro voluptas vel eum omnis minus doloremque ad. Molestiae quisquam ad dolor quo non et.",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    }, {
+      "id": 6,
+      "user_id": null,
+      "name": "Molestiae Harum Molestias",
+      "slug": "molestiae-harum-molestias",
+      "url": "http://www.hegmann.info/pariatur-fugiat-nihil-aliquid-sed-reiciendis",
+      "short_description": "Dolores eligendi et officia aut nostrum repudiandae deleniti. Numquam occaecati deleniti molestiae nihil aut quis.",
+      "long_description": null,
+      "ad_square_button": "https://lorempixel.com/125/125/?18424",
+      "approved": 1,
+      "verified": 0,
+      "promoted": 1,
+      "created_at": "2020-09-18 01:12:35",
+      "updated_at": "2020-09-18 01:12:35",
+      "tags": [],
+      "path": "/games/molestiae-harum-molestias",
+      "rating": 0,
+      "ratings_count": 0,
+      "objectID": "6",
+      "_highlightResult": {
+        "name": {"value": "Molestiae Harum Molestias", "matchLevel": "none", "matchedWords": []},
+        "url": {
+          "value": "http://www.hegmann.info/pariatur-fugiat-nihil-aliquid-sed-reiciendis",
+          "matchLevel": "none",
+          "matchedWords": []
+        },
+        "short_description": {
+          "value": "Dolores eligendi et officia aut nostrum repudiandae deleniti. Numquam occaecati deleniti molestiae nihil aut quis.",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    }, {
+      "id": 3,
+      "user_id": null,
+      "name": "Aut Nihil Ducimus",
+      "slug": "aut-nihil-ducimus",
+      "url": "http://dibbert.info/vel-culpa-voluptatum-iusto-id",
+      "short_description": "Id accusamus molestias aliquam consequatur molestias. Sed error nemo quo et quas ipsum. Minima velit et ad.",
+      "long_description": null,
+      "ad_square_button": "https://lorempixel.com/125/125/?90366",
+      "approved": 1,
+      "verified": 0,
+      "promoted": 1,
+      "created_at": "2020-09-18 01:12:35",
+      "updated_at": "2020-09-18 01:12:35",
+      "tags": [],
+      "path": "/games/aut-nihil-ducimus",
+      "rating": 0,
+      "ratings_count": 0,
+      "objectID": "3",
+      "_highlightResult": {
+        "name": {"value": "Aut Nihil Ducimus", "matchLevel": "none", "matchedWords": []},
+        "url": {"value": "http://dibbert.info/vel-culpa-voluptatum-iusto-id", "matchLevel": "none", "matchedWords": []},
+        "short_description": {
+          "value": "Id accusamus molestias aliquam consequatur molestias. Sed error nemo quo et quas ipsum. Minima velit et ad.",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    }, {
+      "id": 1,
+      "user_id": null,
+      "name": "Impedit Ducimus Similique",
+      "slug": "impedit-ducimus-similique",
+      "url": "http://okuneva.org/nihil-voluptatem-dolore-animi-nihil",
+      "short_description": "Dolores saepe aut quo quos. Enim voluptatibus minus excepturi omnis omnis commodi nam. Illum sed consequuntur cumque voluptatem nisi et et.",
+      "long_description": null,
+      "ad_square_button": "https://lorempixel.com/125/125/?43775",
+      "approved": 1,
+      "verified": 0,
+      "promoted": 0,
+      "created_at": "2020-09-18 01:12:33",
+      "updated_at": "2020-09-18 01:12:35",
+      "tags": [],
+      "path": "/games/impedit-ducimus-similique",
+      "rating": 0,
+      "ratings_count": 0,
+      "objectID": "1",
+      "_highlightResult": {
+        "name": {"value": "Impedit Ducimus Similique", "matchLevel": "none", "matchedWords": []},
+        "url": {
+          "value": "http://okuneva.org/nihil-voluptatem-dolore-animi-nihil",
+          "matchLevel": "none",
+          "matchedWords": []
+        },
+        "short_description": {
+          "value": "Dolores saepe aut quo quos. Enim voluptatibus minus excepturi omnis omnis commodi nam. Illum sed consequuntur cumque voluptatem nisi et et.",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    }],
+    "nbHits": 10,
+    "page": 0,
+    "nbPages": 1,
+    "hitsPerPage": 20,
+    "exhaustiveNbHits": true,
+    "query": "",
+    "params": "query=&page=0&highlightPreTag=__ais-highlight__&highlightPostTag=__%2Fais-highlight__&facets=%5B%5D&tagFilters=",
+    "index": "games",
+    "processingTimeMS": 1
+  }]
+}

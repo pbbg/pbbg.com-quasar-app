@@ -9,7 +9,9 @@
     "dev": "quasar dev",
     "build": "quasar build",
     "lint": "eslint --fix --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "test:e2e": "cross-env E2E_TEST=true start-test 'quasar dev' http-get://localhost:8080 'cypress open'",
+    "test:e2e:ci": "cross-env E2E_TEST=true start-test 'quasar dev' http-get://localhost:8080 'cypress run'"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
@@ -21,10 +23,13 @@
   "devDependencies": {
     "@quasar/app": "^2.0.0",
     "@quasar/quasar-app-extension-dotenv": "^1.0.5",
+    "@quasar/quasar-app-extension-testing-e2e-cypress": "^2.0.1",
     "babel-eslint": "^10.0.1",
+    "cypress-dotenv": "^1.2.2",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-loader": "^3.0.3",
+    "eslint-plugin-cypress": "^2.11.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.0.1",

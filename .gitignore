@@ -31,6 +31,9 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+.webstorm
+.vscode
+jsconfig.json
 
 # Hidden files
 .env*

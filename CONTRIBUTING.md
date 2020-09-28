@@ -7,14 +7,11 @@ Please note we have a code of conduct, please follow it in all your interactions
 
 ## Pull Request Process
 
-1. Ensure any install or build dependencies are removed before the end of the layer when doing a
-   build.
-2. Update the README.md with details of changes to the interface, this includes new environment
-   variables, useful file locations and container parameters.
-3. Increase the version numbers in any examples files and the README.md to the new version that this
-   Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
-4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you
-   do not have permission to do that, you may request the second reviewer to merge it for you.
+1. We *highly* encourage [short, concise git commit messages](https://chris.beams.io/posts/git-commit/).
+2. Ensure any eslint (including warnings) and cypress tests pass locally before creating your Pull Request.
+3. After Pull Request creation, your branch must pass the eslint and UAT tests that run automatically.
+4. Your Pull Request must be approved by at least one contributor.
+5. After the tests pass, and it has been approved, you may request one of the contributors to merge it for you.
 
 ## Code of Conduct
 

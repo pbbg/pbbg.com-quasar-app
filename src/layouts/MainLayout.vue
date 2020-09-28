@@ -15,7 +15,7 @@
           pbbg.com
         </q-toolbar-title>
 
-<!--        <div>Login</div>-->
+        <!--        <div>Login</div>-->
       </q-toolbar>
     </q-header>
 
@@ -54,20 +54,20 @@ const linksData = [
     title: 'Github',
     caption: 'Help is appreciated!',
     icon: 'code',
-    link: 'https://github.com/foohonpie/pbbg.com'
+    link: 'https://github.com/foohonpie/pbbg.com',
   },
   {
     title: 'Discord Chat',
     caption: 'Come hang out. :)',
     icon: 'chat',
-    link: 'https://discord.gg/KvwaEqC'
+    link: 'https://discord.gg/KvwaEqC',
   },
   {
     title: 'Twitter',
     caption: '@pbbgsite',
     icon: 'rss_feed',
-    link: 'https://twitter.com/pbbgsite'
-  }
+    link: 'https://twitter.com/pbbgsite',
+  },
 ]
 
 export default {
@@ -76,8 +76,8 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData
+      essentialLinks: linksData,
     }
-  }
+  },
 }
 </script>

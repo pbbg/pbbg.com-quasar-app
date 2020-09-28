@@ -9,7 +9,7 @@ jobs:
       - name: Install packages
         run: yarn
       - name: Run ESLint
-        run: ./node_modules/.bin/eslint --ext .js,.vue ./
+        run: yarn lint
       - name: Run UATs
         run: yarn test:e2e:ci
         env:

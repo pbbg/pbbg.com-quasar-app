@@ -1,0 +1,23 @@
+name: main
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Install packages
+        run: yarn
+      - name: Run ESLint
+        run: eslint --ext .js,.vue ./
+      - name: Run UATs
+        uses: cypress-io/github-action@v1
+        with:
+          start: yarn dev
+          wait-on: http://localhost:8080/
+          config_file: cypress.json
+          spec: "test/cypress/integration/**/*"
+        env:
+          CYPRESS_baseUrl: http://localhost:8080/
+          CYPRESS_ALGOLIA_APP_ID: ${{ secrets.CYPRESS_ALGOLIA_APP_ID }}
+          CYPRESS_ALGOLIA_KEY: ${{ secrets.CYPRESS_ALGOLIA_KEY }}

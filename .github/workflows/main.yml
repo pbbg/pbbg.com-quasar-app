@@ -1,0 +1,18 @@
+name: main
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Install packages
+        run: yarn
+      - name: Run ESLint
+        run: yarn lint
+      - name: Run UATs
+        run: yarn test:e2e:ci
+        env:
+          CYPRESS_baseUrl: http://localhost:8080/
+          CYPRESS_ALGOLIA_APP_ID: ${{ secrets.CYPRESS_ALGOLIA_APP_ID }}
+          CYPRESS_ALGOLIA_KEY: ${{ secrets.CYPRESS_ALGOLIA_KEY }}

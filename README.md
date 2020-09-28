@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/foohonpie/pbbg.com/workflows/main/badge.svg)](https://github.com/foohonpie/pbbg.com/actions)
+
 # pbbg.com Website (pbbg.com)
 The definitive website for Persistent Browser-Based Games.
 

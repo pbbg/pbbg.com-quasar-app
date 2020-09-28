@@ -14,7 +14,7 @@ You need to have a version of Yarn that is >= 1.21.1 installed on the host machi
 * `yarn dev` build and start the app in development mode (hot-code reloading, error reporting, etc.)
 * `yarn build` build the app for production
 * `yarn lint` lint the files for warnings and errors (automatically run when you make a Pull Request)
-* `yarn fix:lint` lint the files for warnings and errors and try to automatically fix
+* `yarn lint:fix` lint the files for warnings and errors and try to automatically fix
 * `yarn test:e2e` open the UAT tool, Cypress, to select test files to run in the browser
 * `yarn test:e2e:ci` run the UAT tests in headless browser mode (automatically run when you make a Pull Request)
 

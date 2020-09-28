@@ -9,6 +9,6 @@ import InstantSearch from 'components/InstantSearch.vue'
 
 export default {
   name: 'PageIndex',
-  components: { InstantSearch }
+  components: { InstantSearch },
 }
 </script>

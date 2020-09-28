@@ -1,14 +1,25 @@
 <template>
-  <q-card class="q-mb-md" flat bordered>
-
+  <q-card
+    class="q-mb-md"
+    flat
+    bordered
+  >
     <q-card-section class="row flex">
-      <q-avatar size="3rem" color="primary" class="rating-badge">{{ result.rating }}</q-avatar>
+      <q-avatar
+        size="3rem"
+        color="primary"
+        class="rating-badge"
+      >
+        {{ result.rating }}
+      </q-avatar>
       <q-img
         class="col-2 rounded-borders ad-square-button"
         :src="result.ad_square_button"
       />
       <q-card-section class="col">
-        <div class="text-h5 q-mt-sm q-mb-xs">{{result.name}}</div>
+        <div class="text-h5 q-mt-sm q-mb-xs">
+          {{ result.name }}
+        </div>
         <div class="text-grey">
           {{ result.short_description }}
         </div>
@@ -25,7 +36,6 @@
         {{ result.latest_review_body }}
       </p>
     </q-card-section>
-
   </q-card>
 </template>
 
@@ -35,9 +45,9 @@ export default {
   props: {
     result: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
 

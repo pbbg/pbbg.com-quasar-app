@@ -9,7 +9,7 @@ jobs:
       - name: Install packages
         run: yarn
       - name: Run ESLint
-        run: eslint --ext .js,.vue ./
+        run: ./node_modules/.bin/eslint --ext .js,.vue ./
       - name: Run UATs
         uses: cypress-io/github-action@v1
         with:

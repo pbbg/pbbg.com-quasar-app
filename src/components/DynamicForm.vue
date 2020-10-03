@@ -50,6 +50,7 @@ export default {
         :field="field"
         :on-input="onInput"
         :form-models="formModels"
+        class="q-ma-sm"
       />
 
       <div class="row q-gutter-md">

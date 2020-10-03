@@ -8,7 +8,6 @@
  * const <field-name> = {
  *    component: '<ui-component-name>',
  *    default: '',               // Default value
- *    label: '<field-label>',
  *    model: '<model-field-name>',
  *    fieldOptions: {
  *       attrs: {                // Native component attributes
@@ -34,40 +33,36 @@
 
 const name = {
   component: 'q-input',
-  label: 'Name',
   model: 'name',
   fieldOptions: {
     class: [],
     on: { input: true },
     attrs: {
       placeholder: 'Enter your full name',
+      _type: 'text',
     },
     props: {
-      filled: true,
+      outlined: true,
+      label: 'Name',
       rules: [val => !!val || 'Field is required'],
-    },
-    style: {
-      width: '200px',
     },
   },
 }
 
 const email = {
   component: 'q-input',
-  label: 'Email',
   model: 'email',
   fieldOptions: {
     class: [],
     on: { input: true },
     attrs: {
       placeholder: 'Enter your email address',
+      _type: 'email',
     },
     props: {
-      filled: true,
+      outlined: true,
+      label: 'Email',
       rules: [val => !!val || 'Field is required'],
-    },
-    style: {
-      width: '200px',
     },
   },
   children: [
@@ -91,20 +86,18 @@ const email = {
 
 const password = {
   component: 'q-input',
-  label: 'Password',
   model: 'password',
   fieldOptions: {
     class: [],
     on: { input: true },
     attrs: {
       placeholder: 'Enter your password',
+      _type: 'password',
     },
     props: {
-      filled: true,
+      outlined: true,
+      label: 'Password',
       rules: [val => !!val || 'Field is required'],
-    },
-    style: {
-      width: '200px',
     },
   },
   children: [

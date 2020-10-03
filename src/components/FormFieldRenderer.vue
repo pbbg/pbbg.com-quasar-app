@@ -59,13 +59,6 @@ export default {
       data.style = fieldOptions.style && Object.keys(fieldOptions.style).length ? fieldOptions.style : null
       return data
     },
-    appendLabel(h, field) {
-      return h('div', {
-        class: ['text-caption'],
-      }, [
-        field.label,
-      ])
-    },
     appendComponent(h, field) {
       if (field.children && Array.isArray(field.children)) {
         return h(field.component, this.assignFieldData(field), field.children.map(child => this.appendComponent(h, child)))
@@ -75,12 +68,10 @@ export default {
   },
   render(h) {
     const field = this.field
-    const child = [this.appendLabel(h, field)]
-    child.push(this.appendComponent(h, field))
     const data = {
       class: ['column', 'q-gutter-xs'],
     }
-    return h('div', data, child)
+    return h('div', data, [this.appendComponent(h, field)])
   },
 }
 </script>

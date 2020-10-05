@@ -5,5 +5,6 @@ describe('Home', function () {
 
   it('should load up the homepage', () => {
     cy.title().should('include', 'pbbg.com')
+    cy.contains('The PBBG Directory').should('exist')
   })
 })

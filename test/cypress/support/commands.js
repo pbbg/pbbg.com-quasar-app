@@ -26,6 +26,23 @@
 import { mockAlgolia } from '../util'
 
 Cypress.Commands.add('goHome', () => {
+  cy.viewport(1440, 900)
   mockAlgolia()
   cy.visit('/')
+})
+
+Cypress.Commands.add('goCreateGame', () => {
+  cy.contains('Submit a Game').click()
+  cy.contains('The PBBG Directory').should('not.exist')
+})
+
+Cypress.Commands.add('typeIntoFormField', (labelText, text) => {
+  cy.get('label:contains("' + labelText + '")').click()
+  cy.focused().clear().type(text)
+})
+
+Cypress.Commands.add('expectHTML5ValidationMessage', (inputType, message) => {
+  cy.get(`[type="${inputType}"]`).then(($input) => {
+    expect($input[0].validationMessage).to.eq(message)
+  })
 })

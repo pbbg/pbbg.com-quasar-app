@@ -12,10 +12,12 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-// cypress/plugins/router.js
-const dotenvPlugin = require('cypress-dotenv')
-
+// eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
-  config = dotenvPlugin(config)
+  if (process.env.CI === 1 || process.env.CI === '1') {
+    require('cypress-log-to-output').install(on)
+  }
+  config.env.ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID
+  config.env.ALGOLIA_KEY = process.env.ALGOLIA_KEY
   return config
 }

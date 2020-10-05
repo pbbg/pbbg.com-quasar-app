@@ -2,17 +2,26 @@ name: main
 on: [push]
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
+    env:
+      ALGOLIA_APP_ID: TF6EHQUG2K
+      ALGOLIA_KEY: 3ab2216a85ee66f3ecd52c90c1f690fc
     steps:
-      - name: Checkout
+      - name: Checkout and Lint
         uses: actions/checkout@v1
-      - name: Install packages
-        run: yarn
       - name: Run ESLint
-        run: yarn lint
-      - name: Run UATs
-        run: yarn test:e2e:ci
-        env:
-          CYPRESS_baseUrl: http://localhost:8080/
-          CYPRESS_ALGOLIA_APP_ID: ${{ secrets.CYPRESS_ALGOLIA_APP_ID }}
-          CYPRESS_ALGOLIA_KEY: ${{ secrets.CYPRESS_ALGOLIA_KEY }}
+        run: yarn && yarn lint
+      - name: Build app and Run UATs
+        uses: cypress-io/github-action@v2
+        with:
+          config-file: cypress.json
+          start: yarn start
+          wait-on: 'http://localhost:8080'
+          browser: chrome
+          headless: true
+      - name: Archive test screenshots
+        uses: actions/upload-artifact@v1
+        with:
+          name: screenshots
+          path: test/cypress/screenshots
+        if: ${{ failure() }}

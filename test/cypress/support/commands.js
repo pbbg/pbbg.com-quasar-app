@@ -23,11 +23,13 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
-import { mockAlgolia } from '../util'
+import { mockAlgolia } from '../util.js'
 
-Cypress.Commands.add('goHome', () => {
-  cy.viewport(1440, 900)
+Cypress.Commands.add('setupAlgoliaStub', () => {
   mockAlgolia()
+})
+
+Cypress.Commands.add('loadHomeRoute', () => {
   cy.visit('/')
 })
 

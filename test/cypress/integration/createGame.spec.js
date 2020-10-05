@@ -1,6 +1,7 @@
 describe('Create Game', function () {
   beforeEach(() => {
-    cy.goHome()
+    cy.setupAlgoliaStub()
+    cy.loadHomeRoute()
   })
 
   it('should be able to submit new game creation', () => {

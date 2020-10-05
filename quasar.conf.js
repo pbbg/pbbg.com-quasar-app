@@ -48,6 +48,11 @@ module.exports = function (/* ctx */) {
 
       // transpile: false,
 
+      env: {
+        ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
+        ALGOLIA_KEY: process.env.ALGOLIA_KEY,
+      },
+
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).
       // Applies only if "transpile" is set to true.

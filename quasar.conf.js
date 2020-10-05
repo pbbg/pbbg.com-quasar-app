@@ -107,6 +107,8 @@ module.exports = function (/* ctx */) {
 
       // Quasar plugins
       plugins: [],
+    sourceFiles: {
+      router: 'src/router.js',
     },
 
     // animations: 'all', // --- includes all animations

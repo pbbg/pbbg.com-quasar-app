@@ -102,11 +102,20 @@ module.exports = function (/* ctx */) {
       components: [
         'QInput',
         'QIcon',
+        'QSelect',
+        'QFile',
+        'QSeparator',
+        'QBtn',
+        'QSpace',
       ],
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: [
+        'Notify',
+      ],
+    },
+
     sourceFiles: {
       router: 'src/router.js',
     },

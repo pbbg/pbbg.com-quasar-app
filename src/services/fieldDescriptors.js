@@ -44,7 +44,7 @@ const name = {
     props: {
       outlined: true,
       label: 'Name',
-      rules: [val => !!val || 'Field is required'],
+      rules: [val => val && !!val.trim() || 'Field is required'],
     },
   },
 }
@@ -62,7 +62,7 @@ const email = {
     props: {
       outlined: true,
       label: 'Email',
-      rules: [val => !!val || 'Field is required'],
+      rules: [val => val && !!val.trim() || 'Field is required'],
     },
   },
   children: [
@@ -97,7 +97,7 @@ const password = {
     props: {
       outlined: true,
       label: 'Password',
-      rules: [val => !!val || 'Field is required'],
+      rules: [val => val && !!val.trim() || 'Field is required'],
     },
   },
   children: [
@@ -119,10 +119,97 @@ const password = {
   ],
 }
 
+const gameUrl = {
+  component: 'q-input',
+  model: 'url',
+  fieldOptions: {
+    class: [],
+    on: { input: true },
+    attrs: {
+      placeholder: 'Enter the game url address',
+      required: true,
+      _type: 'url',
+    },
+    props: {
+      outlined: true,
+      dense: true,
+      label: 'URL *',
+      rules: [val => val && !!val.trim() || 'Field is Required'],
+    },
+  },
+}
+
+const gameName = {
+  component: 'q-input',
+  model: 'gameName',
+  fieldOptions: {
+    class: [],
+    on: { input: true },
+    attrs: {
+      placeholder: 'Enter the game name',
+      required: true,
+      _type: 'text',
+    },
+    props: {
+      outlined: true,
+      dense: true,
+      label: 'Name *',
+      rules: [val => val && !!val.trim() || 'Field is required'],
+    },
+  },
+}
+
+const gameTags = {
+  component: 'q-select',
+  model: 'tags',
+  fieldOptions: {
+    class: [],
+    on: { input: true },
+    attrs: {
+      placeholder: 'Add one or multiple',
+      _type: 'text',
+    },
+    props: {
+      outlined: true,
+      dense: true,
+      multiple: true,
+      'use-chips': true,
+      'use-input': true,
+      'hide-dropdown-icon': true,
+      'new-value-mode': 'add-unique',
+      label: 'Tags',
+      rules: [''],
+    },
+  },
+}
+const gameShortDescription = {
+  component: 'q-input',
+  model: 'shortDescription',
+  fieldOptions: {
+    class: [],
+    on: { input: true },
+    attrs: {
+      placeholder: 'Enter short description',
+      required: true,
+      _type: 'textarea',
+    },
+    props: {
+      outlined: true,
+      dense: true,
+      label: 'Short Description *',
+      rules: [val => val && !!val.trim() || 'Field is required'],
+    },
+  },
+}
+
 const fieldDescriptors = {
   name,
   email,
   password,
+  gameUrl,
+  gameName,
+  gameTags,
+  gameShortDescription,
 }
 
 export function descriptor(fieldName) {

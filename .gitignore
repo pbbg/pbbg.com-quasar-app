@@ -35,6 +35,10 @@ yarn-error.log*
 .vscode
 jsconfig.json
 
+# Cypress UAT assets
+test/screenshots/**/*
+test/videos/**/*
+
 # Hidden files
 .env*
 !.env.example

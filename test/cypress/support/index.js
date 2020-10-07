@@ -1,5 +1,5 @@
 // ***********************************************************
-// This example support/index.js is processed and
+// This example support/router.js is processed and
 // loaded automatically before your test files.
 //
 // This is a great place to put global configuration and
@@ -15,13 +15,3 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-
-const resizeObserverLoopError = 'ResizeObserver loop limit exceeded'
-
-Cypress.on('uncaught:exception', (err) => {
-  if (err.message.startsWith(resizeObserverLoopError)) {
-    // returning false here prevents Cypress from
-    // failing the test
-    return false
-  }
-})

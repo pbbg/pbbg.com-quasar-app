@@ -23,9 +23,28 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
-import { mockAlgolia } from '../util'
+import { mockAlgolia } from '../util.js'
 
-Cypress.Commands.add('goHome', () => {
+Cypress.Commands.add('setupAlgoliaStub', () => {
   mockAlgolia()
+})
+
+Cypress.Commands.add('loadHomeRoute', () => {
   cy.visit('/')
+})
+
+Cypress.Commands.add('goCreateGame', () => {
+  cy.contains('Submit a Game').click()
+  cy.contains('The PBBG Directory').should('not.exist')
+})
+
+Cypress.Commands.add('typeIntoFormField', (labelText, text) => {
+  cy.get('label:contains("' + labelText + '")').click()
+  cy.focused().clear().type(text)
+})
+
+Cypress.Commands.add('expectHTML5ValidationMessage', (inputType, message) => {
+  cy.get(`[type="${inputType}"]`).then(($input) => {
+    expect($input[0].validationMessage).to.eq(message)
+  })
 })

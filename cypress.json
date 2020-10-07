@@ -1,10 +1,15 @@
 {
-  "baseUrl": "http://localhost:8080/",
+  "baseUrl": "http://localhost:8080",
+  "chromeWebSecurity": false,
+  "modifyObstructiveCode": false,
   "fixturesFolder": "test/cypress/fixtures",
   "integrationFolder": "test/cypress/integration",
   "pluginsFile": "test/cypress/plugins/index.js",
   "screenshotsFolder": "test/cypress/screenshots",
   "supportFile": "test/cypress/support/index.js",
   "videosFolder": "test/cypress/videos",
-  "video": false
+  "testFiles": "**/*.spec.js",
+  "video": false,
+  "viewportHeight": 720,
+  "viewportWidth": 1280
 }

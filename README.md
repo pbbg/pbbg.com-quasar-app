@@ -12,6 +12,21 @@ You need to have a version of Yarn that is >= 1.21.1 installed on the host machi
 3. Create a new branch from `master` with `git checkout -b someNewFeatureOrBugfixBranch`
 4. Install packages by running `yarn` command.
 
+### Set environment variables
+* Copy the `.env.example` and rename to `.env`. This lets you hit the real dev Algolia instance when running locally.
+
+* Copy the `cypress.env.json.example` and rename to `cypress.env.json`. This allows the UAT tests to correctly stub
+Algolia with mock data.
+
+* Copy the values for the `ALGOLIA_APP_ID` and `ALGOLIA_KEY` from the `/.github/workflows/main.yml` file and paste into
+both of your new files.
+
+> Curious as to why these values are checked into source control? Turns out Github Actions currently doesn't support sharing
+> secrets to forked repositories (i.e. for contributors making Pull Requests). Without this, your Github Actions in your
+> forked repository would always fail. Fortunately, these values are to a development instance of Algolia that is an
+> acceptable place to be publicly viewable. The production Algolia credentials can still be protected via the release
+> process in the source repository.
+
 ### Commands
 * `yarn start` build app for production and serve on `http://localhost:8080` *purpose is for startup on production server*
 * `yarn dev` compile and start the app in development mode (hot-code reloading, error reporting, etc.)

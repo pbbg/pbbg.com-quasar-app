@@ -16,12 +16,13 @@
 </template>
 
 <script>
-import DynamicForm from '../components/DynamicForm.vue'
 import { GAME_SCHEMA } from '../services/formSchemas'
 
 export default {
   name: 'PageIndex',
-  components: { DynamicForm },
+  components: {
+    DynamicForm: () => import('../components/DynamicForm.vue'),
+  },
   data() {
     return {
       GAME_SCHEMA,

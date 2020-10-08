@@ -46,12 +46,11 @@
 <script>
 import Vue from 'vue'
 import { SearchBox, PoweredBy, Results, Index } from 'vue-instantsearch'
-import SearchResult from 'components/SearchResult.vue'
 
 export default {
   name: 'InstantSearch',
   components: {
-    SearchResult,
+    SearchResult: () => import('./SearchResult.vue'),
     AisIndex: Vue.component('ais-index', Index),
     AisSearchBox: Vue.component('ais-search-box', SearchBox),
     AisResults: Vue.component('ais-results', Results),

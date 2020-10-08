@@ -18,7 +18,7 @@ export default {
   components: {
     Navigation: () => import('../components/Navigation.vue'),
     Drawer: () => import('../components/Drawer.vue'),
-    FooterBar: () => import('../components/Footerbar.vue'),
+    FooterBar: () => import('../components/FooterBar.vue'),
   },
   data() {
     return {

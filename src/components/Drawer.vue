@@ -1,6 +1,7 @@
 <script>
 import { mapState } from 'vuex'
 import { DRAWER_CLOSED_ACTION } from '../store'
+
 export default {
   props: {
     links: {

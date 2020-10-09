@@ -44,3 +44,44 @@ export default function (/* { store, ssrContext } */) {
 
   return Router
 }
+
+export const navLinks = [
+  {
+    id: 0,
+    label: 'Random Game',
+    link: 'https://pbbg.com/random',
+    targetBlank: false,
+    to: '/games/random',
+  },
+  {
+    id: 1,
+    label: 'Submit a Game',
+    link: 'https://pbbg.com/games/create',
+    targetBlank: false,
+    to: '/games/create',
+  },
+  {
+    id: 2,
+    label: 'About',
+    link: 'https://www.patreon.com/foohonpie',
+    targetBlank: true,
+  },
+  {
+    id: 3,
+    label: 'Forum',
+    link: 'https://discourse.pbbg.com/',
+    targetBlank: true,
+  },
+  {
+    id: 4,
+    label: 'Chat',
+    link: 'https://discord.gg/KvwaEqC',
+    targetBlank: true,
+  },
+  {
+    id: 5,
+    label: 'MakeWebGames',
+    link: 'https://makewebgames.io/',
+    targetBlank: true,
+  },
+]

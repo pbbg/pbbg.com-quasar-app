@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import InstantSearch from '../components/InstantSearch.vue'
-
 export default {
   name: 'PageIndex',
-  components: { InstantSearch },
+  components: {
+    InstantSearch: () => import('../components/InstantSearch.vue'),
+  },
 }
 </script>
 

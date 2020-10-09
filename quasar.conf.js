@@ -123,6 +123,7 @@ module.exports = function (/* ctx */) {
 
     sourceFiles: {
       router: 'src/router.js',
+      store: 'src/store.js',
     },
 
     // animations: 'all', // --- includes all animations

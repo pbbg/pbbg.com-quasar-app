@@ -1,19 +1,12 @@
 <script>
 import { schema } from '../services/formSchemas.js'
 import { descriptor } from '../services/fieldDescriptors.js'
+
 export default {
   props: {
     formSchema: {
       type: String,
       required: true,
-    },
-    successMessage: {
-      type: String,
-      default: 'Success!',
-    },
-    successMessageModelName: {
-      type: String,
-      default: null,
     },
     hideReset: {
       type: Boolean,
@@ -39,24 +32,8 @@ export default {
     onReset() {
       this.$set(this, 'formModels', {})
     },
-    onSubmit() {
-      this.$router.push('/')
-      this.$q.notify({
-        message: this.notificationMessage,
-        position: 'bottom',
-        color: 'positive',
-        type: 'positive',
-        actions: [
-          { label: 'Dismiss', color: 'white', handler: () => { } },
-        ],
-      })
-      // TODO: do something with generic form submission, possibly via store action
-    },
   },
   computed: {
-    notificationMessage() {
-      return this.successMessage + (this.formModels[this.successMessageModelName] ? ': ' + this.formModels[this.successMessageModelName] : '')
-    },
     fields() {
       let fields = {}
       let fieldNames = Object.keys(schema(this.formSchema))
@@ -71,7 +48,7 @@ export default {
 
 <template>
   <q-form
-    @submit="onSubmit"
+    @submit="$emit('submit', formModels)"
     @reset="onReset"
   >
     <form-field-renderer

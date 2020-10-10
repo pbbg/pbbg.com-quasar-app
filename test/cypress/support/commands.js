@@ -36,6 +36,7 @@ Cypress.Commands.add('loadHomeRoute', () => {
 Cypress.Commands.add('goCreateGame', () => {
   cy.contains('Submit a Game').click()
   cy.contains('The PBBG Directory').should('not.exist')
+  cy.contains('GET INFO').should('exist')
 })
 
 Cypress.Commands.add('typeIntoFormField', (labelText, text) => {

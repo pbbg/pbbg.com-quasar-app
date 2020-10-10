@@ -36,8 +36,8 @@ yarn-error.log*
 jsconfig.json
 
 # Cypress UAT assets
-test/screenshots/**/*
-test/videos/**/*
+test/cypress/screenshots/**/*
+test/cypress/videos/**/*
 
 # Hidden files
 .env*

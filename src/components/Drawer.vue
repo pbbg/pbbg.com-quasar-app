@@ -1,4 +1,5 @@
 <script>
+import { openURL } from 'quasar'
 import { mapState } from 'vuex'
 import { DRAWER_CLOSED_ACTION } from '../store'
 
@@ -17,7 +18,7 @@ export default {
   methods: {
     clickNavItem(link) {
       if (link.targetBlank) {
-        window.location.href = link.href
+        openURL(link.href)
       }
       if (link.to) {
         this.$router.push(link.to)

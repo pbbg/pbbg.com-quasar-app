@@ -1,5 +1,8 @@
 <script>
-import { GAME_SCHEMA } from '../services/formSchemas'
+import { mapState } from 'vuex'
+import { GAME_SCHEMA, GAME_INFO_SCHEMA } from '../services/formSchemas'
+import { GAME_INFO_RETRIEVE_ACTION, GAME_INFO_RESET_ACTION } from '../store'
+import { notify } from '../services/utils'
 
 export default {
   name: 'PageIndex',
@@ -9,21 +12,28 @@ export default {
   data() {
     return {
       GAME_SCHEMA,
+      GAME_INFO_SCHEMA,
+      GAME_INFO_RETRIEVE_ACTION,
+      GAME_INFO_RESET_ACTION,
     }
   },
   methods: {
-    handleSubmit(formModels) {
+    handleGameInfo(formModels) {
+      this.$store.dispatch(GAME_INFO_RETRIEVE_ACTION, formModels.url)
+    },
+    handleGameSubmit(formModels) {
       this.$router.push('/')
-      this.$q.notify({
+      notify({
         message: `Success! You submitted a new game: ${formModels.gameName}`,
-        position: 'bottom',
-        color: 'positive',
-        type: 'positive',
-        actions: [
-          { label: 'Dismiss', color: 'white', handler: () => { } },
-        ],
       })
     },
+    resetInfoForm() {
+      this.$refs.infoForm.$refs.dynamicForm.reset()
+      this.$store.dispatch(GAME_INFO_RESET_ACTION)
+    },
+  },
+  computed: {
+    ...mapState(['gameInfo']),
   },
 }
 </script>
@@ -35,10 +45,23 @@ export default {
         <q-toolbar-title>Submit a Game</q-toolbar-title>
       </q-toolbar>
       <dynamic-form
+        ref="infoForm"
+        :form-schema="GAME_INFO_SCHEMA"
+        submit-text="GET INFO"
+        @submit="handleGameInfo"
+        hide-cancel
+        hide-reset
+        class="col-10 q-pa-md border-all no-top-left-border no-top-right-border single-input-style"
+        :class="{'meld-bottom': gameInfo }"
+      />
+      <dynamic-form
+        v-show="gameInfo"
         :form-schema="GAME_SCHEMA"
-        @submit="handleSubmit"
+        @submit="handleGameSubmit"
+        @reset="resetInfoForm"
         hide-cancel
         class="col-10 q-pa-md border-all no-top-left-border no-top-right-border"
+        :class="{'meld-top': gameInfo }"
       />
     </div>
   </q-page>
@@ -60,4 +83,28 @@ export default {
     border-top-left-radius: 0
   .no-top-right-border
     border-top-right-radius: 0
+
+  .meld-bottom
+    border-bottom: 0 solid transparent
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
+    padding-bottom: 0
+  .meld-top
+    border-top: 0 solid transparent
+    border-top-left-radius: 0
+    border-top-right-radius: 0
+    padding-top: 0
+
+  .single-input-style /deep/
+      display: flex
+      align-items: center
+      justify-content: space-between
+      .field-row
+        flex: 1
+      .actions
+        max-width: 8rem
+        flex: 1
+        align-self: baseline
+        height: 3.5rem
+        padding-left: .5rem
 </style>

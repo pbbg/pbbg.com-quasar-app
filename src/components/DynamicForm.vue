@@ -16,6 +16,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    submitText: {
+      type: String,
+      default: 'Save',
+    },
   },
   data() {
     return {
@@ -31,6 +35,7 @@ export default {
     },
     onReset() {
       this.$set(this, 'formModels', {})
+      this.$emit('reset')
     },
   },
   computed: {
@@ -48,8 +53,10 @@ export default {
 
 <template>
   <q-form
+    ref="dynamicForm"
     @submit="$emit('submit', formModels)"
     @reset="onReset"
+    class="dynamic-form"
   >
     <form-field-renderer
       v-for="field in fields"
@@ -57,10 +64,10 @@ export default {
       :field="field"
       :on-input="onInput"
       :form-models="formModels"
-      class="q-mb-sm"
+      class="q-mb-sm field-row"
     />
 
-    <div class="row q-gutter-md">
+    <div class="row q-gutter-md actions">
       <q-btn
         v-if="!hideCancel"
         label="Cancel"
@@ -76,7 +83,7 @@ export default {
       />
       <q-btn
         color="info"
-        label="Save"
+        :label="submitText"
         unelevated
         type="submit"
       />

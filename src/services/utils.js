@@ -1,0 +1,28 @@
+import {Notify} from 'quasar'
+
+export function mockGameInfoHttpRequest(url) {
+  // mocking the api request until the endpoint is implemented
+  return new Promise(resolve => {
+    const data = {
+      canonicalUrl: url,
+      metaTitle: 'SomeMetaTitle',
+      metaDescription: 'Some Meta Description Goes here....',
+      image: 'https://www.imageHostedSomewhere.png',
+    }
+    setTimeout(() => {
+      resolve({ data })
+    }, 1000)
+  })
+}
+
+export function notify(options) {
+  Notify.create({
+    message: options.message ? options.message : 'Success!',
+    position: options.position ? options.position : 'bottom',
+    color: options.color ? options.color : 'positive',
+    type: options.type ? options.type : 'positive',
+    actions: options.actions ? options.actions : [
+      { label: 'Dismiss', color: 'white', handler: options.handler ? options.handler : () => { } },
+    ],
+  })
+}

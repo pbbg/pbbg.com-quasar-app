@@ -1,33 +1,56 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { Loading } from 'quasar'
+import { mockGameInfoHttpRequest, notify } from './services/utils'
 import { setValue } from './services/stateMutators'
 Vue.use(Vuex)
 
 export const NAV_ICON_CLICKED_ACTION = 'NAV_ICON_CLICKED_ACTION'
 export const DRAWER_CLOSED_ACTION = 'DRAWER_CLOSED_ACTION'
+export const GAME_INFO_RETRIEVE_ACTION = 'GAME_INFO_RETRIEVE_ACTION'
+export const GAME_INFO_RESET_ACTION = 'GAME_INFO_RESET_ACTION'
+
+const SET_NAV_DRAWER_MUTATION = 'SET_NAV_DRAWER_MUTATION'
+const RESET_INFO_MUTATION = 'RESET_INFO_MUTATION'
+const SET_INFO_MUTATION = 'SET_INFO_MUTATION'
 
 function initialState() {
   return {
     navDrawerOpen: false,
+    gameInfo: null,
   }
 }
 
 export default function () {
-  const store = new Vuex.Store({
+  return new Vuex.Store({
     state: initialState,
     actions: {
       [DRAWER_CLOSED_ACTION]({ commit }) {
-        commit('setNavDrawer', false)
+        commit(SET_NAV_DRAWER_MUTATION, false)
       },
       [NAV_ICON_CLICKED_ACTION]({ commit }) {
-        commit('setNavDrawer', true)
+        commit(SET_NAV_DRAWER_MUTATION, true)
+      },
+      async [GAME_INFO_RETRIEVE_ACTION]({ commit }, url) {
+        Loading.show({ message: 'Stand by. Loading game data...'})
+        const gameInfoResponse = await mockGameInfoHttpRequest(url)
+        Loading.hide()
+        commit(SET_INFO_MUTATION, gameInfoResponse.data)
+        notify({
+          message: `Data loaded for ${url}`,
+          color: 'gray-8',
+          type: 'info',
+        })
+      },
+      [GAME_INFO_RESET_ACTION]({ commit }) {
+        commit(RESET_INFO_MUTATION, null)
       },
     },
     mutations: {
-      setNavDrawer: setValue('navDrawerOpen'),
+      [SET_NAV_DRAWER_MUTATION]: setValue('navDrawerOpen'),
+      [RESET_INFO_MUTATION]: setValue('gameInfo'),
+      [SET_INFO_MUTATION]: setValue('gameInfo'),
     },
     getters: {},
   })
-
-  return store
 }

@@ -1,5 +1,6 @@
 <script>
 import { NAV_ICON_CLICKED_ACTION } from '../store'
+
 export default {
   props: {
     links: {

@@ -1,18 +1,6 @@
-<template>
-  <q-layout view="lhh LpR lff">
-    <navigation :links="navLinks" />
-    <drawer :links="navLinks" />
-
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-
-    <footer-bar />
-  </q-layout>
-</template>
-
 <script>
 import { navLinks } from '../router'
+
 export default {
   name: 'MainLayout',
   components: {
@@ -27,3 +15,16 @@ export default {
   },
 }
 </script>
+
+<template>
+  <q-layout view="lhh LpR lff">
+    <navigation :links="navLinks" />
+    <drawer :links="navLinks" />
+
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+
+    <footer-bar />
+  </q-layout>
+</template>

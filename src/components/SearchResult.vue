@@ -1,3 +1,15 @@
+<script>
+export default {
+  name: 'SearchResult',
+  props: {
+    result: {
+      type: Object,
+      required: true,
+    },
+  },
+}
+</script>
+
 <template>
   <q-card
     class="q-mb-md"
@@ -38,18 +50,6 @@
     </q-card-section>
   </q-card>
 </template>
-
-<script>
-export default {
-  name: 'SearchResult',
-  props: {
-    result: {
-      type: Object,
-      required: true,
-    },
-  },
-}
-</script>
 
 <style lang="sass" scoped>
   .ad-square-button

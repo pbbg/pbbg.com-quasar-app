@@ -1,6 +1,7 @@
 export const PERSON_SCHEMA = 'person'
 export const USER_SCHEMA = 'user'
 export const GAME_SCHEMA = 'game'
+export const GAME_INFO_SCHEMA = 'gameInfo'
 
 const person = {
   name: {},
@@ -13,16 +14,20 @@ const user = {
 }
 
 const game = {
-  gameUrl: {},
   gameName: {},
   gameTags: {},
   gameShortDescription: {},
+}
+
+const gameInfo = {
+  gameUrl: {},
 }
 
 const formSchemas = {
   [PERSON_SCHEMA]: person,
   [USER_SCHEMA]: user,
   [GAME_SCHEMA]: game,
+  [GAME_INFO_SCHEMA]: gameInfo,
 }
 
 export function schema(schemaName) {

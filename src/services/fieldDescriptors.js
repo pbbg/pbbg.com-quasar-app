@@ -126,7 +126,7 @@ const gameUrl = {
     class: [],
     on: { input: true },
     attrs: {
-      placeholder: 'Enter the game url address',
+      placeholder: 'https://example.com',
       required: true,
       _type: 'url',
     },

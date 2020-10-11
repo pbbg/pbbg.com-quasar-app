@@ -1,19 +1,12 @@
 <script>
 import { schema } from '../services/formSchemas.js'
 import { descriptor } from '../services/fieldDescriptors.js'
+
 export default {
   props: {
     formSchema: {
       type: String,
       required: true,
-    },
-    successMessage: {
-      type: String,
-      default: 'Success!',
-    },
-    successMessageModelName: {
-      type: String,
-      default: null,
     },
     hideReset: {
       type: Boolean,
@@ -22,6 +15,10 @@ export default {
     hideCancel: {
       type: Boolean,
       default: false,
+    },
+    submitText: {
+      type: String,
+      default: 'Save',
     },
   },
   data() {
@@ -38,25 +35,10 @@ export default {
     },
     onReset() {
       this.$set(this, 'formModels', {})
-    },
-    onSubmit() {
-      this.$router.push('/')
-      this.$q.notify({
-        message: this.notificationMessage,
-        position: 'bottom',
-        color: 'positive',
-        type: 'positive',
-        actions: [
-          { label: 'Dismiss', color: 'white', handler: () => { } },
-        ],
-      })
-      // TODO: do something with generic form submission, possibly via store action
+      this.$emit('reset')
     },
   },
   computed: {
-    notificationMessage() {
-      return this.successMessage + (this.formModels[this.successMessageModelName] ? ': ' + this.formModels[this.successMessageModelName] : '')
-    },
     fields() {
       let fields = {}
       let fieldNames = Object.keys(schema(this.formSchema))
@@ -71,8 +53,10 @@ export default {
 
 <template>
   <q-form
-    @submit="onSubmit"
+    ref="dynamicForm"
+    @submit="$emit('submit', formModels)"
     @reset="onReset"
+    class="dynamic-form"
   >
     <form-field-renderer
       v-for="field in fields"
@@ -80,10 +64,10 @@ export default {
       :field="field"
       :on-input="onInput"
       :form-models="formModels"
-      class="q-mb-sm"
+      class="q-mb-sm field-row"
     />
 
-    <div class="row q-gutter-md">
+    <div class="row q-gutter-md actions">
       <q-btn
         v-if="!hideCancel"
         label="Cancel"
@@ -99,7 +83,7 @@ export default {
       />
       <q-btn
         color="info"
-        label="Save"
+        :label="submitText"
         unelevated
         type="submit"
       />

@@ -31,7 +31,7 @@
  *
  */
 
-import {validAlphaNumericString, validEmailString} from './utils'
+import { validAlphaNumericString, validEmailString } from './utils'
 
 const name = {
   component: 'q-input',
@@ -235,6 +235,7 @@ const gameTags = {
     },
   },
 }
+
 const gameShortDescription = {
   component: 'q-input',
   model: 'shortDescription',
@@ -266,10 +267,6 @@ const fieldDescriptors = {
   gameShortDescription,
 }
 
-export function descriptor(fieldName) {
+export const descriptor = fieldName => {
   return fieldDescriptors[fieldName] ? fieldDescriptors[fieldName] : throw new Error(`Field Descriptor for ${fieldName} is not defined`)
-}
-
-export default () => {
-  return fieldDescriptors
 }

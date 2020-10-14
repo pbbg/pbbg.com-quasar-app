@@ -6,12 +6,10 @@ export default {
   components: {
     LoginControl: () => import('./LoginControl.vue'),
   },
-  data() {
-    return {
-      navLinks,
-      NAV_ICON_PRESS_ACTION,
-    }
-  },
+  data: () => ({
+    navLinks,
+    NAV_ICON_PRESS_ACTION,
+  }),
 }
 </script>
 

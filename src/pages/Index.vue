@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'PageIndex',
+  name: 'Index',
   components: {
     InstantSearch: () => import('../components/InstantSearch.vue'),
   },

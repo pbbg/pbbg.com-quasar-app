@@ -11,7 +11,6 @@ export default {
 
 <template>
   <q-layout view="lhh LpR lff">
-
     <navigation />
     <drawer />
 
@@ -20,6 +19,5 @@ export default {
     </q-page-container>
 
     <footer-bar />
-
   </q-layout>
 </template>

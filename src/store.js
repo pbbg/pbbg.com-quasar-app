@@ -2,8 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import router from 'vue-router'
 import { Loading } from 'quasar'
-import { mockGameInfoHttpRequest, notify } from './services/utils'
-import { setValue } from './services/stateMutators'
+import { mockGameInfoHttpRequest } from './services/utils'
 import { registerUser, loginUser, setProfileAndGoDashboard } from './services/auth'
 Vue.use(Vuex)
 
@@ -20,15 +19,17 @@ const RESET_INFO_MUTATION = 'RESET_INFO_MUTATION'
 const SET_INFO_MUTATION = 'SET_INFO_MUTATION'
 export const SET_USER_MUTATION = 'SET_USER_MUTATION'
 
-function initialState() {
-  return {
-    navDrawerOpen: false,
-    gameInfo: null,
-    user: null,
-  }
+const initialState = () => ({
+  navDrawerOpen: false,
+  gameInfo: null,
+  user: null,
+})
+
+const setValue = key => (state, val) => {
+  state[key] = val
 }
 
-export default function () {
+export default () => {
   return new Vuex.Store({
     state: initialState,
     actions: {
@@ -49,8 +50,7 @@ export default function () {
           type: 'info',
         })
       },
-      // eslint-disable-next-line no-unused-vars
-      async [NEW_GAME_SUBMIT_ACTION]({ commit }, formModels) {
+      async [NEW_GAME_SUBMIT_ACTION](context, formModels) {
         router.push('/')
         notify({
           message: `Success! You submitted a new game: ${formModels.gameName}`,

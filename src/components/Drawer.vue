@@ -8,12 +8,10 @@ export default {
   components: {
     LoginControl: () => import('./LoginControl.vue'),
   },
-  data() {
-    return {
-      navLinks,
-      DRAWER_CLOSE_ACTION,
-    }
-  },
+  data: () => ({
+    navLinks,
+    DRAWER_CLOSE_ACTION,
+  }),
   methods: {
     clickNavItem(link) {
       if (link.targetBlank) {

@@ -7,11 +7,9 @@ export default {
   components: {
     DynamicForm: () => import('../components/DynamicForm.vue'),
   },
-  data() {
-    return {
-      USER_LOGIN_SCHEMA,
-    }
-  },
+  data: () => ({
+    USER_LOGIN_SCHEMA,
+  }),
   methods: {
     handleLoginSubmit(formModels) {
       this.$store.dispatch(USER_LOGIN_SUBMIT_ACTION, formModels)

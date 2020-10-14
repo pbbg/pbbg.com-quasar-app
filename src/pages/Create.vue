@@ -8,12 +8,10 @@ export default {
   components: {
     DynamicForm: () => import('../components/DynamicForm.vue'),
   },
-  data() {
-    return {
-      GAME_SCHEMA,
-      GAME_INFO_SCHEMA,
-    }
-  },
+  data: () => ({
+    GAME_SCHEMA,
+    GAME_INFO_SCHEMA,
+  }),
   methods: {
     handleGameInfo(formModels) {
       this.$store.dispatch(GAME_INFO_RETRIEVE_ACTION, formModels.url)

@@ -1,25 +1,20 @@
 import Vue from 'vue'
-import { LocalStorage } from 'quasar'
 import { notify } from './utils'
 import router from 'vue-router'
+import { LocalStorage } from 'quasar'
 import { SET_USER_MUTATION } from '../store'
-const AUTH_TOKEN_NAME = 'pbbgUserToken'
+
 const API_BASE_URL = 'https://dev-api.pbbg.com'
 
-export async function registerUser({ name, email, password }) {
+export const registerUser = async ({ name, email, password }) => {
   try {
-    const response = await Vue.prototype.$axios.post(API_BASE_URL + '/register', {
-      name,
-      email,
-      password,
-    })
-    LocalStorage.set(AUTH_TOKEN_NAME, response.data.token)
-    setAxiosAuthHeader()
     notify({
       message: 'Welcome!',
       color: 'info',
       type: 'info',
     })
+    const response = await Vue.prototype.$axios.post(API_BASE_URL + '/register', { name, email, password })
+    setAxiosAuthHeader(response.data.token)
     return true
   } catch(error) {
     notify({
@@ -30,19 +25,15 @@ export async function registerUser({ name, email, password }) {
   }
 }
 
-export async function loginUser({ email, password }) {
+export const loginUser = async ({ email, password }) => {
   try {
-    const response = await Vue.prototype.$axios.post(API_BASE_URL + '/login', {
-      email,
-      password,
-    })
-    LocalStorage.set(AUTH_TOKEN_NAME, response.data.token)
-    setAxiosAuthHeader()
     notify({
       message: 'Welcome back',
       color: 'info',
       type: 'info',
     })
+    const response = await Vue.prototype.$axios.post(API_BASE_URL + '/login', { email, password })
+    setAxiosAuthHeader(response.data.token)
   } catch(error) {
     notify({
       message: 'Whoops! There was an issue trying to login.',
@@ -52,7 +43,7 @@ export async function loginUser({ email, password }) {
   }
 }
 
-export async function getUser() {
+export const getUser = async () => {
   try {
     const response = await Vue.prototype.$axios.get(API_BASE_URL + '/user')
     return response.data
@@ -65,7 +56,7 @@ export async function getUser() {
   }
 }
 
-export async function setProfileAndGoDashboard(commit) {
+export const setProfileAndGoDashboard = async commit => {
   router.push('/dashboard')
   const user = await getUser()
   if (user) {
@@ -75,8 +66,11 @@ export async function setProfileAndGoDashboard(commit) {
   }
 }
 
-function setAxiosAuthHeader() {
+const AUTH_TOKEN_NAME = 'pbbgUserToken'
+
+const setAxiosAuthHeader = token => {
+  LocalStorage.set(AUTH_TOKEN_NAME, token)
   Vue.prototype.$axios.default.headers = {
-    'Authorization': 'Bearer ' + LocalStorage.getItem(AUTH_TOKEN_NAME),
+    'Authorization': 'Bearer ' + token,
   }
 }

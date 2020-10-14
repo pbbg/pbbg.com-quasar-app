@@ -32,10 +32,6 @@ const formSchemas = {
   [USER_REGISTER_SCHEMA]: userRegister,
 }
 
-export function schema(schemaName) {
+export const schema = schemaName => {
   return formSchemas[schemaName] ? formSchemas[schemaName] : throw new Error(`Form Schema ${schemaName} is not defined`)
-}
-
-export default () => {
-  return formSchemas
 }

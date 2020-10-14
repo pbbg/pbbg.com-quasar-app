@@ -2,19 +2,15 @@
 import { openURL } from 'quasar'
 import { mapState } from 'vuex'
 import { DRAWER_CLOSE_ACTION } from '../store'
+import { navLinks } from '../router'
 
 export default {
   components: {
     LoginControl: () => import('./LoginControl.vue'),
   },
-  props: {
-    links: {
-      type: Array,
-      required: true,
-    },
-  },
   data() {
     return {
+      navLinks,
       DRAWER_CLOSE_ACTION,
     }
   },
@@ -50,7 +46,7 @@ export default {
       />
       <q-separator />
       <q-item
-        v-for="link of links"
+        v-for="link of navLinks"
         :key="link.id"
         clickable
         v-ripple

@@ -1,18 +1,14 @@
 <script>
+import { navLinks } from '../router'
 import { NAV_ICON_PRESS_ACTION } from '../store'
 
 export default {
   components: {
     LoginControl: () => import('./LoginControl.vue'),
   },
-  props: {
-    links: {
-      type: Array,
-      required: true,
-    },
-  },
   data() {
     return {
+      navLinks,
       NAV_ICON_PRESS_ACTION,
     }
   },
@@ -55,7 +51,7 @@ export default {
       />
       <div class="gt-sm q-pl-sm">
         <q-btn
-          v-for="link of links"
+          v-for="link of navLinks"
           :key="link.id"
           stretch
           flat

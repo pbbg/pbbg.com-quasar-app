@@ -41,7 +41,7 @@ export default {
   >
     <q-list class="column">
       <login-control
-        :drawer="true"
+        :is-in-drawer="true"
         class="q-ma-md"
       />
       <q-separator />

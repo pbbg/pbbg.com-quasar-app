@@ -1,7 +1,7 @@
 <script>
 export default {
   props: {
-    drawer: {
+    isInDrawer: {
       type: Boolean,
       default: false,
     },
@@ -11,15 +11,15 @@ export default {
 
 <template>
   <q-btn-group
-    class="login-control row"
+    class="row"
     :class="{'q-px-sm': $q.screen.gt.sm}"
     outline
   >
     <q-btn
       stretch
-      :outline="drawer ? true : false"
-      :flat="drawer ? false : true"
-      :color="drawer ? 'primary' : 'white'"
+      :outline="isInDrawer"
+      :flat="!isInDrawer"
+      :color="isInDrawer ? 'primary' : 'white'"
       label="LOGIN"
       type="a"
       to="/login"
@@ -27,9 +27,9 @@ export default {
     />
     <q-btn
       stretch
-      :outline="drawer ? true : false"
-      :flat="drawer ? false : true"
-      :color="drawer ? 'primary' : 'white'"
+      :outline="isInDrawer"
+      :flat="!isInDrawer"
+      :color="isInDrawer ? 'primary' : 'white'"
       label="REGISTER"
       type="a"
       to="/register"

@@ -2,6 +2,9 @@
 import { NAV_ICON_CLICKED_ACTION } from '../store'
 
 export default {
+  components: {
+    LoginControl: () => import('./LoginControl.vue'),
+  },
   props: {
     links: {
       type: Array,
@@ -64,6 +67,7 @@ export default {
         />
       </div>
       <q-space />
+      <login-control class="gt-sm" />
     </q-toolbar>
   </q-header>
 </template>

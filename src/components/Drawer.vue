@@ -4,6 +4,9 @@ import { mapState } from 'vuex'
 import { DRAWER_CLOSED_ACTION } from '../store'
 
 export default {
+  components: {
+    LoginControl: () => import('./LoginControl.vue'),
+  },
   props: {
     links: {
       type: Array,
@@ -40,13 +43,12 @@ export default {
     elevated
     content-class="bg-grey-1 lt-md"
   >
-    <q-list>
-      <q-item-label
-        header
-        class="text-grey-8"
-      >
-        Navigation
-      </q-item-label>
+    <q-list class="column">
+      <login-control
+        :drawer="true"
+        class="q-ma-md"
+      />
+      <q-separator />
       <q-item
         v-for="link of links"
         :key="link.id"

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import router from 'vue-router'
+import router from './router'
 import { Loading } from 'quasar'
 import { mockGameInfoHttpRequest } from './services/utils'
 import { notify, messages } from './services/messages'
@@ -48,7 +48,7 @@ export default () => {
         notify(messages.dataLoadedForGame(url))
       },
       async [NEW_GAME_SUBMIT_ACTION](context, formModels) {
-        router.push('/')
+        await router.push({ path: '/' })
         notify(messages.gameSubmitted(formModels.gameName))
       },
       [GAME_INFO_RESET_ACTION]({ commit }) {

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import router from 'vue-router'
+import router from '../router'
 import { LocalStorage } from 'quasar'
 import { notify, messages } from './messages'
 import { SET_USER_MUTATION } from '../store'
@@ -37,12 +37,12 @@ export const getUser = async () => {
 }
 
 export const setProfileAndGoDashboard = async commit => {
-  router.push('/dashboard')
+  await router.push({ path: '/dashboard' })
   const user = await getUser()
   if (user) {
     commit(SET_USER_MUTATION, user)
   } else {
-    router.push('/')
+    await router.push({ path: '/' })
   }
 }
 

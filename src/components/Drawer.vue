@@ -18,7 +18,7 @@ export default {
         openURL(link.href)
       }
       if (link.to) {
-        this.$router.push(link.to)
+        this.$router.push({ path: link.to })
       }
     },
   },

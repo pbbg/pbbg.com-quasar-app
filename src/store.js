@@ -6,10 +6,11 @@ import { setValue } from './services/stateMutators'
 import { registerUser, loginUser, setProfileAndGoDashboard } from './services/auth'
 Vue.use(Vuex)
 
-export const NAV_ICON_CLICKED_ACTION = 'NAV_ICON_CLICKED_ACTION'
-export const DRAWER_CLOSED_ACTION = 'DRAWER_CLOSED_ACTION'
+export const NAV_ICON_PRESS_ACTION = 'NAV_ICON_PRESS_ACTION'
+export const DRAWER_CLOSE_ACTION = 'DRAWER_CLOSE_ACTION'
 export const GAME_INFO_RETRIEVE_ACTION = 'GAME_INFO_RETRIEVE_ACTION'
 export const GAME_INFO_RESET_ACTION = 'GAME_INFO_RESET_ACTION'
+export const NEW_GAME_SUBMIT_ACTION = 'NEW_GAME_SUBMIT_ACTION'
 export const USER_REGISTRATION_SUBMIT_ACTION = 'USER_REGISTRATION_SUBMIT_ACTION'
 export const USER_LOGIN_SUBMIT_ACTION = 'USER_LOGIN_SUBMIT_ACTION'
 
@@ -30,10 +31,10 @@ export default function () {
   return new Vuex.Store({
     state: initialState,
     actions: {
-      [DRAWER_CLOSED_ACTION]({ commit }) {
+      [DRAWER_CLOSE_ACTION]({ commit }) {
         commit(SET_NAV_DRAWER_MUTATION, false)
       },
-      [NAV_ICON_CLICKED_ACTION]({ commit }) {
+      [NAV_ICON_PRESS_ACTION]({ commit }) {
         commit(SET_NAV_DRAWER_MUTATION, true)
       },
       async [GAME_INFO_RETRIEVE_ACTION]({ commit }, url) {
@@ -47,6 +48,8 @@ export default function () {
           type: 'info',
         })
       },
+      // eslint-disable-next-line no-unused-vars
+      async [NEW_GAME_SUBMIT_ACTION]({ commit }, formModels) {
       [GAME_INFO_RESET_ACTION]({ commit }) {
         commit(RESET_INFO_MUTATION, null)
       },

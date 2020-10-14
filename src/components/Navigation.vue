@@ -1,5 +1,5 @@
 <script>
-import { NAV_ICON_CLICKED_ACTION } from '../store'
+import { NAV_ICON_PRESS_ACTION } from '../store'
 
 export default {
   components: {
@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      NAV_ICON_CLICKED_ACTION,
+      NAV_ICON_PRESS_ACTION,
     }
   },
 }
@@ -32,7 +32,7 @@ export default {
         round
         icon="menu"
         aria-label="Menu"
-        @click="$store.dispatch(NAV_ICON_CLICKED_ACTION)"
+        @click="$store.dispatch(NAV_ICON_PRESS_ACTION)"
       />
 
       <q-toolbar-title

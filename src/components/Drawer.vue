@@ -1,7 +1,7 @@
 <script>
 import { openURL } from 'quasar'
 import { mapState } from 'vuex'
-import { DRAWER_CLOSED_ACTION } from '../store'
+import { DRAWER_CLOSE_ACTION } from '../store'
 
 export default {
   components: {
@@ -15,7 +15,7 @@ export default {
   },
   data() {
     return {
-      DRAWER_CLOSED_ACTION,
+      DRAWER_CLOSE_ACTION,
     }
   },
   methods: {
@@ -37,7 +37,7 @@ export default {
 <template>
   <q-drawer
     :value="navDrawerOpen"
-    @hide="$store.dispatch(DRAWER_CLOSED_ACTION)"
+    @hide="$store.dispatch(DRAWER_CLOSE_ACTION)"
     overlay
     behavior="mobile"
     elevated

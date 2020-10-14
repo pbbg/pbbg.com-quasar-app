@@ -1,8 +1,7 @@
 <script>
 import { mapState } from 'vuex'
 import { GAME_SCHEMA, GAME_INFO_SCHEMA } from '../services/formSchemas'
-import { GAME_INFO_RETRIEVE_ACTION, GAME_INFO_RESET_ACTION } from '../store'
-import { notify } from '../services/utils'
+import { GAME_INFO_RETRIEVE_ACTION, GAME_INFO_RESET_ACTION, NEW_GAME_SUBMIT_ACTION } from '../store'
 
 export default {
   name: 'PageIndex',
@@ -13,8 +12,6 @@ export default {
     return {
       GAME_SCHEMA,
       GAME_INFO_SCHEMA,
-      GAME_INFO_RETRIEVE_ACTION,
-      GAME_INFO_RESET_ACTION,
     }
   },
   methods: {
@@ -22,10 +19,7 @@ export default {
       this.$store.dispatch(GAME_INFO_RETRIEVE_ACTION, formModels.url)
     },
     handleGameSubmit(formModels) {
-      this.$router.push('/')
-      notify({
-        message: `Success! You submitted a new game: ${formModels.gameName}`,
-      })
+      this.$store.dispatch(NEW_GAME_SUBMIT_ACTION, formModels)
     },
     resetInfoForm() {
       this.$refs.infoForm.$refs.dynamicForm.reset()

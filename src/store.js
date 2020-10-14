@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import router from 'vue-router'
 import { Loading } from 'quasar'
 import { mockGameInfoHttpRequest } from './services/utils'
+import { notify, messages } from './services/messages'
 import { registerUser, loginUser, setProfileAndGoDashboard } from './services/auth'
 Vue.use(Vuex)
 
@@ -44,17 +45,11 @@ export default () => {
         const gameInfoResponse = await mockGameInfoHttpRequest(url)
         Loading.hide()
         commit(SET_INFO_MUTATION, gameInfoResponse.data)
-        notify({
-          message: `Data loaded for ${url}`,
-          color: 'gray-8',
-          type: 'info',
-        })
+        notify(messages.dataLoadedForGame(url))
       },
       async [NEW_GAME_SUBMIT_ACTION](context, formModels) {
         router.push('/')
-        notify({
-          message: `Success! You submitted a new game: ${formModels.gameName}`,
-        })
+        notify(messages.gameSubmitted(formModels.gameName))
       },
       [GAME_INFO_RESET_ACTION]({ commit }) {
         commit(RESET_INFO_MUTATION, null)

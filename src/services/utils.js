@@ -1,4 +1,3 @@
-import {Notify} from 'quasar'
 export const mockGameInfoHttpRequest = async url => {
   // mocking the api request until the endpoint is implemented
   return new Promise(resolve => {
@@ -14,17 +13,6 @@ export const mockGameInfoHttpRequest = async url => {
   })
 }
 
-export function notify(options) {
-  Notify.create({
-    message: options.message ? options.message : 'Success!',
-    position: options.position ? options.position : 'bottom',
-    color: options.color ? options.color : 'positive',
-    type: options.type ? options.type : 'positive',
-    actions: options.actions ? options.actions : [
-      { label: 'Dismiss', color: 'white', handler: options.handler ? options.handler : () => { } },
-    ],
-  })
-}
 export const validAlphaNumericString = value => {
   const universalCharSupportedAlphaNumRegex = /^([a-zA-Z0-9\u0600-\u06FF\u0660-\u0669\u06F0-\u06F9 _.-]+)$/
   return !!value.trim().match(universalCharSupportedAlphaNumRegex)

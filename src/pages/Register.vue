@@ -1,28 +1,23 @@
 <script>
 import { USER_REGISTER_SCHEMA } from '../services/formSchemas'
 import { USER_REGISTRATION_SUBMIT_ACTION } from '../store'
-import { notify, isMatchingPasswords } from '../services/utils'
+import { isMatchingPasswords } from '../services/utils'
+import { notify, messages } from '../services/messages'
 
 export default {
   name: 'Register',
   components: {
     DynamicForm: () => import('../components/DynamicForm.vue'),
   },
-  data() {
-    return {
-      USER_REGISTER_SCHEMA,
-    }
-  },
+  data: () => ({
+    USER_REGISTER_SCHEMA,
+  }),
   methods: {
     handleRegisterSubmit(formModels) {
       if (isMatchingPasswords(formModels.password, formModels.confirmPassword)) {
         this.$store.dispatch(USER_REGISTRATION_SUBMIT_ACTION, formModels)
       } else {
-        notify({
-          type: 'negative',
-          color: 'negative',
-          message: 'Passwords must match!',
-        })
+        notify(messages.passwordsMustMatch)
       }
     },
   },

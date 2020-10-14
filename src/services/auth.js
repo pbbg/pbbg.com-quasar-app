@@ -1,45 +1,29 @@
 import Vue from 'vue'
-import { notify } from './utils'
 import router from 'vue-router'
 import { LocalStorage } from 'quasar'
+import { notify, messages } from './messages'
 import { SET_USER_MUTATION } from '../store'
 
 const API_BASE_URL = 'https://dev-api.pbbg.com'
 
 export const registerUser = async ({ name, email, password }) => {
   try {
-    notify({
-      message: 'Welcome!',
-      color: 'info',
-      type: 'info',
-    })
     const response = await Vue.prototype.$axios.post(API_BASE_URL + '/register', { name, email, password })
     setAxiosAuthHeader(response.data.token)
+    notify(messages.register(name))
     return true
   } catch(error) {
-    notify({
-      message: 'Whoops! There was an issue trying to register.',
-      color: 'negative',
-      type: 'negative',
-    })
+    notify(messages.failRegister)
   }
 }
 
 export const loginUser = async ({ email, password }) => {
   try {
-    notify({
-      message: 'Welcome back',
-      color: 'info',
-      type: 'info',
-    })
     const response = await Vue.prototype.$axios.post(API_BASE_URL + '/login', { email, password })
     setAxiosAuthHeader(response.data.token)
+    notify(messages.login)
   } catch(error) {
-    notify({
-      message: 'Whoops! There was an issue trying to login.',
-      color: 'negative',
-      type: 'negative',
-    })
+    notify(messages.failLogin)
   }
 }
 
@@ -48,11 +32,7 @@ export const getUser = async () => {
     const response = await Vue.prototype.$axios.get(API_BASE_URL + '/user')
     return response.data
   } catch(error) {
-    notify({
-      message: 'Whoops! There was an issue trying to retrieve your user profile',
-      color: 'negative',
-      type: 'negative',
-    })
+    notify(messages.failGetUser)
   }
 }
 

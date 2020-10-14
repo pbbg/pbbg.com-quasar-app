@@ -62,21 +62,7 @@ export default {
 </template>
 
 <style lang="sass" scoped>
-  @import '../css/quasar.variables'
-
-  .top-left-round
-    border-top-left-radius: .25rem
-  .top-right-round
-    border-top-right-radius: .25rem
-
-  .border-all
-    border: 1px solid $separator-color
-    border-radius: .25rem
-
-  .no-top-left-border
-    border-top-left-radius: 0
-  .no-top-right-border
-    border-top-right-radius: 0
+  @import '../css/app.sass'
 
   .meld-bottom
     border-bottom: 0 solid transparent

@@ -74,8 +74,3 @@ export default {
     </q-card>
   </q-dialog>
 </template>
-
-<style lang="sass" scoped>
-.user-forms-modal
-  width: 40rem
-</style>

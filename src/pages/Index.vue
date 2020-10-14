@@ -17,9 +17,3 @@ export default {
     </div>
   </q-page>
 </template>
-
-<style lang="sass" scoped>
-  .smaller-h1
-    font-size: 2.25rem
-    line-height: 2.25rem
-</style>

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import router from 'vue-router'
 import { Loading } from 'quasar'
 import { mockGameInfoHttpRequest, notify } from './services/utils'
 import { setValue } from './services/stateMutators'
@@ -50,6 +51,11 @@ export default function () {
       },
       // eslint-disable-next-line no-unused-vars
       async [NEW_GAME_SUBMIT_ACTION]({ commit }, formModels) {
+        router.push('/')
+        notify({
+          message: `Success! You submitted a new game: ${formModels.gameName}`,
+        })
+      },
       [GAME_INFO_RESET_ACTION]({ commit }) {
         commit(RESET_INFO_MUTATION, null)
       },

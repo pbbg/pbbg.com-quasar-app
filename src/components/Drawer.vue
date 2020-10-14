@@ -56,7 +56,11 @@ export default {
         v-ripple
         @click="clickNavItem(link)"
       >
-        <q-item-section>{{ link.label }}</q-item-section>
+        <q-item-section>
+          <q-item-label>
+            {{ link.label }}
+          </q-item-label>
+        </q-item-section>
       </q-item>
     </q-list>
   </q-drawer>

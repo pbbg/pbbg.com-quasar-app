@@ -4,7 +4,7 @@ import { GAME_SCHEMA, GAME_INFO_SCHEMA } from '../services/formSchemas'
 import { GAME_INFO_RETRIEVE_ACTION, GAME_INFO_RESET_ACTION, NEW_GAME_SUBMIT_ACTION } from '../store'
 
 export default {
-  name: 'PageIndex',
+  name: 'Create',
   components: {
     DynamicForm: () => import('../components/DynamicForm.vue'),
   },
@@ -34,7 +34,7 @@ export default {
 
 <template>
   <q-page class="row justify-center items-start">
-    <div class="column col-11 col-sm-6 q-py-md">
+    <div class="column col-11 col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-10 q-py-md">
       <q-toolbar class="col-1 bg-secondary text-white q-pa-sm q-pl-md top-left-round top-right-round">
         <q-toolbar-title>Submit a Game</q-toolbar-title>
       </q-toolbar>

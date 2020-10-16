@@ -6,18 +6,18 @@ export const messages = {
     color: 'info',
     type: 'info',
   }),
-  failRegister: {
-    message: 'Whoops! There was an issue trying to register.',
+  failRegister: message => ({
+    message: `${message || 'Whoops! There was an issue trying to register.'}`,
+    color: 'negative',
+    type: 'negative',
+  }),
+  failLogin: {
+    message: 'Whoops! There was an issue trying to login.',
     color: 'negative',
     type: 'negative',
   },
-  login: {
-    message: 'Welcome back',
-    color: 'info',
-    type: 'info',
-  },
-  failLogin: {
-    message: 'Whoops! There was an issue trying to login.',
+  invalidLogin: {
+    message: 'Failed to login with the provided email and password.',
     color: 'negative',
     type: 'negative',
   },

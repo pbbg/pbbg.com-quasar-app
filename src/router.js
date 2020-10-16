@@ -1,7 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import auth from './services/auth'
+import store, { USER_LOGOUT_PRESS_ACTION } from './store'
 
 Vue.use(VueRouter)
+
+const requiresAuth = (to, from, next) => {
+  if (!auth.loggedIn()) {
+    next({
+      path: '/login',
+      query: { redirect: to.fullPath },
+    })
+  } else {
+    next()
+  }
+}
 
 const routes = [
   {
@@ -11,6 +24,12 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: '/games/create', component: () => import('pages/Create.vue') },
       { path: '/login', component: () => import('pages/Login.vue') },
+      { path: '/logout',
+        beforeEnter: async (to, from, next) => {
+          await store.dispatch(USER_LOGOUT_PRESS_ACTION)
+          next('/')
+        },
+      },
       { path: '/register', component: () => import('pages/Register.vue') },
     ],
   },
@@ -20,13 +39,13 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Dashboard.vue') },
     ],
+    beforeEnter: requiresAuth,
   },
   {
     path: '*',
     component: () => import('pages/Error404.vue'),
   },
 ]
-
 
 const router = new VueRouter({
   scrollBehavior: () => ({ x: 0, y: 0 }),

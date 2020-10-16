@@ -1,15 +1,20 @@
 <script>
+import { mapState } from 'vuex'
 import { navLinks } from '../router'
 import { NAV_ICON_PRESS_ACTION } from '../store'
 
 export default {
   components: {
+    ProfileControl: () => import('./ProfileControl.vue'),
     LoginControl: () => import('./LoginControl.vue'),
   },
   data: () => ({
     navLinks,
     NAV_ICON_PRESS_ACTION,
   }),
+  computed: {
+    ...mapState(['user']),
+  },
 }
 </script>
 
@@ -61,7 +66,14 @@ export default {
         />
       </div>
       <q-space />
-      <login-control class="gt-sm" />
+      <login-control
+        v-if="!user"
+        class="gt-sm"
+      />
+      <profile-control
+        v-else
+        class="gt-sm"
+      />
     </q-toolbar>
   </q-header>
 </template>

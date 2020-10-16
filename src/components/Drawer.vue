@@ -6,6 +6,7 @@ import { navLinks } from '../router'
 
 export default {
   components: {
+    ProfileControl: () => import('./ProfileControl.vue'),
     LoginControl: () => import('./LoginControl.vue'),
   },
   data: () => ({
@@ -23,7 +24,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(['navDrawerOpen']),
+    ...mapState(['navDrawerOpen', 'user']),
   },
 }
 </script>
@@ -39,7 +40,12 @@ export default {
   >
     <q-list class="column">
       <login-control
+        v-if="!user"
         :is-in-drawer="true"
+        class="q-ma-md"
+      />
+      <profile-control
+        v-else
         class="q-ma-md"
       />
       <q-separator />

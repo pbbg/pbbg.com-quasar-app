@@ -198,7 +198,7 @@ const gameUrl = {
 
 const gameName = {
   component: 'q-input',
-  model: 'gameName',
+  model: 'name',
   fieldOptions: {
     class: [],
     on: { input: true },
@@ -242,7 +242,7 @@ const gameTags = {
 
 const gameShortDescription = {
   component: 'q-input',
-  model: 'shortDescription',
+  model: 'short_description',
   fieldOptions: {
     class: [],
     on: { input: true },

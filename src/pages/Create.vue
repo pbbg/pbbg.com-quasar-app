@@ -11,17 +11,20 @@ export default {
   data: () => ({
     GAME_SCHEMA,
     GAME_INFO_SCHEMA,
+    infoUrl: null,
   }),
   methods: {
     handleGameInfo(formModels) {
+      this.infoUrl = formModels.url
       this.$store.dispatch(GAME_INFO_RETRIEVE_ACTION, formModels.url)
     },
     handleGameSubmit(formModels) {
-      this.$store.dispatch(NEW_GAME_SUBMIT_ACTION, formModels)
+      this.$store.dispatch(NEW_GAME_SUBMIT_ACTION, { ...formModels, url: this.infoUrl })
     },
     resetInfoForm() {
       this.$refs.infoForm.$refs.dynamicForm.reset()
       this.$store.dispatch(GAME_INFO_RESET_ACTION)
+      this.infoUrl = null
     },
   },
   computed: {

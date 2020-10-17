@@ -42,9 +42,6 @@ export default new Vuex.Store({
     },
     [USER_PROFILE_UPDATED_ACTION]({ commit }) {
       commit(SET_USER_MUTATION, auth.profile)
-    async [NEW_GAME_SUBMIT_ACTION](context, formModels) {
-      await router.push({ path: '/' })
-      notify(messages.gameSubmitted(formModels.gameName))
     },
     [GAME_INFO_RESET_ACTION]({ commit }) {
       commit(RESET_INFO_MUTATION, null)
@@ -56,6 +53,20 @@ export default new Vuex.Store({
           const gameInfoResponse = await mockGameInfoHttpRequest(url)
           commit(SET_INFO_MUTATION, gameInfoResponse.data)
           notify(messages.dataLoadedForGame(url))
+        },
+      })
+    },
+    async [NEW_GAME_SUBMIT_ACTION](context, formModels) {
+      await asyncRequestWithLoader({
+        loadingMessage: 'Submitting new game...',
+        tryCb: async () => {
+          await Vue.prototype.$axios.post('/games', formModels)
+          router.push({ path: '/' })
+          notify(messages.gameSubmitted(formModels.name))
+        },
+        catchCb: async error => {
+          const errorMessage = errorMessageFromApiResponse(error)
+          notify(messages.failGameSubmit(errorMessage))
         },
       })
     },

@@ -16,6 +16,11 @@ export const messages = {
     color: 'negative',
     type: 'negative',
   },
+  failGameSubmit: message => ({
+    message: `${message || 'Oh noes! There was an issue trying to submit your game.'}`,
+    color: 'negative',
+    type: 'negative',
+  }),
   invalidLogin: {
     message: 'Failed to login with the provided email and password.',
     color: 'negative',

@@ -1,3 +1,5 @@
+import { uniqueGameUrl } from '../util'
+
 describe('Create Game', function () {
   beforeEach(() => {
     cy.setupAlgoliaStub()
@@ -9,13 +11,33 @@ describe('Create Game', function () {
     cy.createNewGameRequest()
   })
 
+  it('should only submit new games for urls that have not already been submitted', () => {
+    const url = uniqueGameUrl()
+    cy.goCreateGame()
+    cy.createNewGameRequest({
+      url,
+      name: 'GameOne',
+      shortDescription: 'Game One Description',
+    })
+    cy.verifyHomepage()
+    cy.goCreateGame()
+
+    cy.typeIntoFormField('URL *', url)
+    cy.contains('GET INFO').click()
+
+    cy.typeIntoFormField('Name *', 'DuplicateUrlGame')
+    cy.typeIntoFormField('Short Description *', 'DuplicateUrlGame Description')
+    cy.contains('Save').click()
+    cy.contains('The given data was invalid. The url has already been taken.').should('be.visible')
+  })
+
   it('should require a valid url before allowing submit', () => {
     cy.goCreateGame()
     cy.typeIntoFormField('URL *', 'invalidUrl')
     cy.contains('GET INFO').click()
 
     cy.expectHTML5ValidationMessage('url', 'Please enter a URL.')
-    cy.typeIntoFormField('URL *', 'https://www.google.com')
+    cy.typeIntoFormField('URL *', uniqueGameUrl())
     cy.contains('GET INFO').click()
 
     cy.typeIntoFormField('Name *', 'TestGame')
@@ -27,7 +49,7 @@ describe('Create Game', function () {
 
   it('should require a name before allowing submit', () => {
     cy.goCreateGame()
-    cy.typeIntoFormField('URL *', 'https://www.google.com')
+    cy.typeIntoFormField('URL *', uniqueGameUrl())
     cy.contains('GET INFO').click()
     cy.typeIntoFormField('Short Description *', 'a big long description here and some more text.')
     cy.contains('Save').click()
@@ -42,7 +64,7 @@ describe('Create Game', function () {
 
   it('should require a short description before allowing submit', () => {
     cy.goCreateGame()
-    cy.typeIntoFormField('URL *', 'https://www.google.com')
+    cy.typeIntoFormField('URL *', uniqueGameUrl())
     cy.contains('GET INFO').click()
     cy.typeIntoFormField('Name *', 'TestGame')
     cy.contains('Save').click()

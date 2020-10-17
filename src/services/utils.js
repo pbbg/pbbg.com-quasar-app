@@ -1,3 +1,5 @@
+import { Loading } from 'quasar'
+
 export const mockGameInfoHttpRequest = async url => {
   // mocking the api request until the endpoint is implemented
   return new Promise(resolve => {
@@ -11,6 +13,20 @@ export const mockGameInfoHttpRequest = async url => {
       resolve({ data })
     }, 1000)
   })
+}
+
+export const asyncRequestWithLoader = async (
+  { loadingMessage, tryCb, catchCb, finallyCb }
+  = { loadingMessage: null, tryCb: null, catchCb: null, finallyCb: null }) => {
+  loadingMessage ? Loading.show({ message: loadingMessage }) : null
+  try {
+    await tryCb()
+  } catch(error) {
+    catchCb ? await catchCb(error) : null
+  } finally {
+    finallyCb ? await finallyCb() : null
+    loadingMessage ? Loading.hide() : null
+  }
 }
 
 export const errorMessageFromApiResponse = error => {

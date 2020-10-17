@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import router from './router'
-import { Loading } from 'quasar'
-import { mockGameInfoHttpRequest } from './services/utils'
+import { mockGameInfoHttpRequest, errorMessageFromApiResponse, asyncRequestWithLoader } from './services/utils'
 import { notify, messages } from './services/messages'
 import auth from './services/auth'
 Vue.use(Vuex)
@@ -41,13 +40,8 @@ export default new Vuex.Store({
     [NAV_ICON_PRESS_ACTION]({ commit }) {
       commit(SET_NAV_DRAWER_MUTATION, true)
     },
-    async [GAME_INFO_RETRIEVE_ACTION]({ commit }, url) {
-      Loading.show({ message: 'Stand by. Loading game data...'})
-      const gameInfoResponse = await mockGameInfoHttpRequest(url)
-      commit(SET_INFO_MUTATION, gameInfoResponse.data)
-      notify(messages.dataLoadedForGame(url))
-      Loading.hide()
-    },
+    [USER_PROFILE_UPDATED_ACTION]({ commit }) {
+      commit(SET_USER_MUTATION, auth.profile)
     async [NEW_GAME_SUBMIT_ACTION](context, formModels) {
       await router.push({ path: '/' })
       notify(messages.gameSubmitted(formModels.gameName))
@@ -55,37 +49,47 @@ export default new Vuex.Store({
     [GAME_INFO_RESET_ACTION]({ commit }) {
       commit(RESET_INFO_MUTATION, null)
     },
+    async [GAME_INFO_RETRIEVE_ACTION]({ commit }, url) {
+      await asyncRequestWithLoader({
+        loadingMessage: 'Stand by. Loading game data...',
+        tryCb: async () => {
+          const gameInfoResponse = await mockGameInfoHttpRequest(url)
+          commit(SET_INFO_MUTATION, gameInfoResponse.data)
+          notify(messages.dataLoadedForGame(url))
+        },
+      })
+    },
     async [USER_REGISTRATION_SUBMIT_ACTION]({ dispatch }, formModels) {
-      Loading.show({ message: 'Registering user...'})
-      try {
-        await auth.registerUser(formModels)
-        await auth.setProfile()
-        dispatch(USER_PROFILE_UPDATED_ACTION)
-        router.push('/dashboard')
-      } finally {
-        Loading.hide()
-      }
+      await asyncRequestWithLoader({
+        loadingMessage: 'Registering user...',
+        tryCb: async () => {
+          await auth.registerUser(formModels)
+          await auth.setProfile()
+          dispatch(USER_PROFILE_UPDATED_ACTION)
+          router.push('/dashboard')
+        },
+      })
     },
     async [USER_LOGIN_SUBMIT_ACTION]({ dispatch }, formModels) {
-      Loading.show({ message: 'Logging in user...'})
-      try {
-        await auth.login(formModels)
-        await auth.setProfile()
-        dispatch(USER_PROFILE_UPDATED_ACTION)
-        router.push('/dashboard')
-      } finally {
-        Loading.hide()
-      }
+      await asyncRequestWithLoader({
+        loadingMessage: 'Logging in user...',
+        tryCb: async () => {
+          await auth.login(formModels)
+          await auth.setProfile()
+          dispatch(USER_PROFILE_UPDATED_ACTION)
+          router.push('/dashboard')
+        },
+      })
     },
     async [USER_LOGOUT_PRESS_ACTION]({ dispatch }) {
-      Loading.show({ message: 'Logging out...'})
-      auth.logout()
-      dispatch(USER_PROFILE_UPDATED_ACTION)
-      await router.push('/')
-      Loading.hide()
-    },
-    [USER_PROFILE_UPDATED_ACTION]({ commit }) {
-      commit(SET_USER_MUTATION, auth.profile)
+      await asyncRequestWithLoader({
+        loadingMessage: 'Logging out...',
+        tryCb: async () => {
+          auth.logout()
+          dispatch(USER_PROFILE_UPDATED_ACTION)
+          await router.push('/')
+        },
+      })
     },
   },
   mutations: {

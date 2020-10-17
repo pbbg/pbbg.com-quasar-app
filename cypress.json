@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://localhost:8080",
+  "baseUrl": "https://localhost:8080",
   "chromeWebSecurity": false,
   "modifyObstructiveCode": false,
   "fixturesFolder": "test/cypress/fixtures",

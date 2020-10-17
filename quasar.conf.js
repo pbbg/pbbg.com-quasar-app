@@ -87,6 +87,7 @@ module.exports = function (/* ctx */) {
         aggregateTimeout: 100,
         poll: 1000,
       },
+      historyApiFallback: true,
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework

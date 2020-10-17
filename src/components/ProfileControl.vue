@@ -13,6 +13,7 @@ export default {
     flat
     :class="{'q-mx-sm': $q.screen.gt.sm}"
     :label="user.name"
+    :aria-label="user.name"
     class="no-border-radius"
   >
     <q-list>

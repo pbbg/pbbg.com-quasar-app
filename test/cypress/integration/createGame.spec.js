@@ -4,33 +4,9 @@ describe('Create Game', function () {
     cy.loadHomeRoute()
   })
 
-  it('should be able to submit new game creation', () => {
+  it('should be able to submit new game creation with toast as game data loads', () => {
     cy.goCreateGame()
-    cy.typeIntoFormField('URL *', 'https://www.google.com')
-    cy.contains('GET INFO').click()
-
-    cy.typeIntoFormField('Name *', 'TestGame')
-    cy.typeIntoFormField('Short Description *', 'a big long description here and some more text.')
-    cy.contains('Save').click()
-
-    cy.contains('The PBBG Directory').should('exist')
-    cy.contains('Success!').should('exist')
-  })
-
-  it('should show loading message/toast when game data loads', () => {
-    const gameUrl = 'https://www.google.com'
-    cy.goCreateGame()
-    cy.typeIntoFormField('URL *', gameUrl)
-    cy.contains('GET INFO').click()
-
-    cy.contains('Stand by. Loading game data...').should('exist')
-    cy.contains(`Data loaded for ${gameUrl}`)
-    cy.typeIntoFormField('Name *', 'TestGame')
-    cy.typeIntoFormField('Short Description *', 'a big long description here and some more text.')
-    cy.contains('Save').click()
-
-    cy.contains('The PBBG Directory').should('exist')
-    cy.contains('Success!').should('exist')
+    cy.createNewGameRequest()
   })
 
   it('should require a valid url before allowing submit', () => {
@@ -45,8 +21,8 @@ describe('Create Game', function () {
     cy.typeIntoFormField('Name *', 'TestGame')
     cy.typeIntoFormField('Short Description *', 'a big long description here and some more text.')
     cy.contains('Save').click()
-    cy.contains('The PBBG Directory').should('exist')
-    cy.contains('Success!').should('exist')
+    cy.verifyHomepage()
+    cy.contains('Success!').should('be.visible')
   })
 
   it('should require a name before allowing submit', () => {
@@ -60,8 +36,8 @@ describe('Create Game', function () {
 
     cy.typeIntoFormField('Name *', 'TestGame')
     cy.contains('Save').click()
-    cy.contains('The PBBG Directory').should('exist')
-    cy.contains('Success!').should('exist')
+    cy.verifyHomepage()
+    cy.contains('Success!').should('be.visible')
   })
 
   it('should require a short description before allowing submit', () => {
@@ -75,7 +51,7 @@ describe('Create Game', function () {
 
     cy.typeIntoFormField('Short Description *', 'a big long description here and some more text.')
     cy.contains('Save').click()
-    cy.contains('The PBBG Directory').should('exist')
-    cy.contains('Success!').should('exist')
+    cy.verifyHomepage()
+    cy.contains('Success!').should('be.visible')
   })
 })

@@ -39,7 +39,6 @@ export default {
             @cancel="$router.back()"
             class="col-10 q-pa-md"
           >
-            <a href="">Forgot Password?</a>
             <q-btn
               label="Cancel"
               @click="$router.back()"
@@ -55,6 +54,7 @@ export default {
             <q-btn
               color="info"
               label="LOGIN"
+              aria-label="Login User Button"
               unelevated
               type="submit"
             />

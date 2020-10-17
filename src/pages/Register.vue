@@ -60,6 +60,7 @@ export default {
             <q-btn
               color="info"
               label="REGISTER"
+              aria-label="Register User Button"
               unelevated
               type="submit"
             />

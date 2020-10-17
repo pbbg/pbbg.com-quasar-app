@@ -41,12 +41,13 @@ const name = {
     on: { input: true },
     attrs: {
       placeholder: 'Enter your full name',
+      required: true,
       _type: 'text',
     },
     props: {
       outlined: true,
       dense: true,
-      label: 'Name',
+      label: 'Name *',
       rules: [
         val => val && !!val.trim() || 'Field is required',
         val => val && validAlphaNumericString(val.trim()) || 'Name may only contain letters and/or numbers',
@@ -63,12 +64,13 @@ const email = {
     on: { input: true },
     attrs: {
       placeholder: 'Enter your email address',
+      required: true,
       _type: 'email',
     },
     props: {
       outlined: true,
       dense: true,
-      label: 'Email',
+      label: 'Email *',
       rules: [
         val => val && !!val.trim() || 'Field is required',
         val => val && validEmailString(val.trim()) || 'Email must be in correct format (x@y.z)',
@@ -102,11 +104,12 @@ const password = {
     on: { input: true },
     attrs: {
       placeholder: 'Enter your password',
+      required: true,
       _type: 'password',
     },
     props: {
       outlined: true,
-      label: 'Password',
+      label: 'Password *',
       dense: true,
       rules: [
         val => val && !!val.trim() || 'Field is required',
@@ -141,12 +144,13 @@ const confirmPassword = {
     on: { input: true },
     attrs: {
       placeholder: 'Confirm your password',
+      required: true,
       _type: 'password',
     },
     props: {
       outlined: true,
       dense: true,
-      label: 'Confirm Password',
+      label: 'Password Confirm *',
       rules: [
         val => val && !!val.trim() || 'Field is required',
         val => val && val.trim().length > 7 || 'Password must be at least 8 characters long',

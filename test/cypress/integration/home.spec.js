@@ -6,10 +6,10 @@ describe('Home', function () {
 
   it('should load up the homepage', () => {
     cy.title().should('include', 'pbbg.com')
-    cy.contains('The PBBG Directory').should('exist')
+    cy.verifyHomepage()
   })
 
   it('should see some test search results', () => {
-    cy.contains('Test Algolia Search Results').should('exist')
+    cy.contains('Test Algolia Search Results').should('be.visible')
   })
 })

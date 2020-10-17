@@ -55,11 +55,4 @@ export default {
   .ad-square-button
     height: 10rem
     width: 10rem
-
-  .rating-badge
-    position: absolute
-    top: -1rem
-    left: -1rem
-    color: #ffffff
-    z-index: 4
 </style>

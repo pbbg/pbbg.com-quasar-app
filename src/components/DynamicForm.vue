@@ -21,11 +21,9 @@ export default {
       default: 'Save',
     },
   },
-  data() {
-    return {
-      formModels: {},
-    }
-  },
+  data: () => ({
+    formModels: {},
+  }),
   components: {
     FormFieldRenderer: () => import('./FormFieldRenderer.vue'),
   },
@@ -56,7 +54,6 @@ export default {
     ref="dynamicForm"
     @submit="$emit('submit', formModels)"
     @reset="onReset"
-    class="dynamic-form"
   >
     <form-field-renderer
       v-for="field in fields"
@@ -68,25 +65,28 @@ export default {
     />
 
     <div class="row q-gutter-md actions">
-      <q-btn
-        v-if="!hideCancel"
-        label="Cancel"
-        outline
-        unelevated
-      />
-      <q-btn
-        v-if="!hideReset"
-        label="Reset"
-        outline
-        unelevated
-        type="reset"
-      />
-      <q-btn
-        color="info"
-        :label="submitText"
-        unelevated
-        type="submit"
-      />
+      <slot>
+        <q-btn
+          v-if="!hideCancel"
+          label="Cancel"
+          @click="$emit('cancel')"
+          outline
+          unelevated
+        />
+        <q-btn
+          v-if="!hideReset"
+          label="Reset"
+          outline
+          unelevated
+          type="reset"
+        />
+        <q-btn
+          color="info"
+          :label="submitText"
+          unelevated
+          type="submit"
+        />
+      </slot>
     </div>
   </q-form>
 </template>

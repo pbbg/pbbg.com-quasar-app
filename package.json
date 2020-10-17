@@ -6,7 +6,7 @@
   "author": "@FoohonPie & Friends",
   "private": true,
   "scripts": {
-    "start": "yarn build && http-server ./dist/spa",
+    "start": "yarn build && quasar serve ./dist/spa --history --https --cors --port 8080 --open",
     "dev": "quasar dev",
     "build": "quasar build",
     "lint": "eslint --ext .js,.vue ./",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
+    "@quasar/cli": "^1.1.2",
     "@quasar/quasar-app-extension-dotenv": "^1.0.5",
     "babel-eslint": "^10.0.1",
     "cypress": "^5.3.0",
@@ -36,8 +37,7 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^6.1.2",
-    "http-server": "^0.12.3"
+    "eslint-plugin-vue": "^6.1.2"
   },
   "browserslist": [
     "last 10 Chrome versions",

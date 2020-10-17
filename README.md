@@ -29,6 +29,8 @@ both of your new files.
 
 ### Commands
 * `yarn start` build app for production and serve on `http://localhost:8080` *purpose is for startup on production server*
+> IMPORTANT - you may get a browser prevention due to scrambled info when running serve on localhost.
+> Turn on allow-insecure-localhost for chrome/brave, like: chrome://flags/#allow-insecure-localhost
 * `yarn dev` compile and start the app in development mode (hot-code reloading, error reporting, etc.)
 * `yarn build` build app for production
 * `yarn lint` lint the files for warnings and errors (automatically run when you make a Pull Request)

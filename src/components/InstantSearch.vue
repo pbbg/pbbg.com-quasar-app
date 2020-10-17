@@ -11,13 +11,11 @@ export default {
     AisResults: Vue.component('ais-results', Results),
     AisPoweredBy: Vue.component('ais-powered-by', PoweredBy),
   },
-  data () {
-    return {
-      ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
-      ALGOLIA_KEY: process.env.ALGOLIA_KEY,
-      searchQuery: '',
-    }
-  },
+  data: () => ({
+    ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
+    ALGOLIA_KEY: process.env.ALGOLIA_KEY,
+    searchQuery: '',
+  }),
   methods: {
     refineSearch (refine, value) {
       this.searchQuery = value

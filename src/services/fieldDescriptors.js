@@ -31,6 +31,8 @@
  *
  */
 
+import { validAlphaNumericString, validEmailString } from './utils'
+
 const name = {
   component: 'q-input',
   model: 'name',
@@ -39,12 +41,17 @@ const name = {
     on: { input: true },
     attrs: {
       placeholder: 'Enter your full name',
+      required: true,
       _type: 'text',
     },
     props: {
       outlined: true,
-      label: 'Name',
-      rules: [val => val && !!val.trim() || 'Field is required'],
+      dense: true,
+      label: 'Name *',
+      rules: [
+        val => val && !!val.trim() || 'Field is required',
+        val => val && validAlphaNumericString(val.trim()) || 'Name may only contain letters and/or numbers',
+      ],
     },
   },
 }
@@ -57,12 +64,17 @@ const email = {
     on: { input: true },
     attrs: {
       placeholder: 'Enter your email address',
+      required: true,
       _type: 'email',
     },
     props: {
       outlined: true,
-      label: 'Email',
-      rules: [val => val && !!val.trim() || 'Field is required'],
+      dense: true,
+      label: 'Email *',
+      rules: [
+        val => val && !!val.trim() || 'Field is required',
+        val => val && validEmailString(val.trim()) || 'Email must be in correct format (x@y.z)',
+      ],
     },
   },
   children: [
@@ -92,12 +104,57 @@ const password = {
     on: { input: true },
     attrs: {
       placeholder: 'Enter your password',
+      required: true,
       _type: 'password',
     },
     props: {
       outlined: true,
-      label: 'Password',
-      rules: [val => val && !!val.trim() || 'Field is required'],
+      label: 'Password *',
+      dense: true,
+      rules: [
+        val => val && !!val.trim() || 'Field is required',
+        val => val && val.trim().length > 7 || 'Password must be at least 8 characters long',
+      ],
+    },
+  },
+  children: [
+    {
+      component: 'template',
+      fieldOptions: {
+        slot: 'prepend',
+      },
+      children: [
+        {
+          component: 'q-icon',
+          fieldOptions: {
+            class: ['cursor-pointer'],
+            props: {name: 'lock'},
+          },
+        },
+      ],
+    },
+  ],
+}
+
+const confirmPassword = {
+  component: 'q-input',
+  model: 'confirmPassword',
+  fieldOptions: {
+    class: [],
+    on: { input: true },
+    attrs: {
+      placeholder: 'Confirm your password',
+      required: true,
+      _type: 'password',
+    },
+    props: {
+      outlined: true,
+      dense: true,
+      label: 'Password Confirm *',
+      rules: [
+        val => val && !!val.trim() || 'Field is required',
+        val => val && val.trim().length > 7 || 'Password must be at least 8 characters long',
+      ],
     },
   },
   children: [
@@ -182,6 +239,7 @@ const gameTags = {
     },
   },
 }
+
 const gameShortDescription = {
   component: 'q-input',
   model: 'shortDescription',
@@ -206,16 +264,13 @@ const fieldDescriptors = {
   name,
   email,
   password,
+  confirmPassword,
   gameUrl,
   gameName,
   gameTags,
   gameShortDescription,
 }
 
-export function descriptor(fieldName) {
+export const descriptor = fieldName => {
   return fieldDescriptors[fieldName] ? fieldDescriptors[fieldName] : throw new Error(`Field Descriptor for ${fieldName} is not defined`)
-}
-
-export default () => {
-  return fieldDescriptors
 }

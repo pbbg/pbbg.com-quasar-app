@@ -1,31 +1,23 @@
 <script>
 import { mapState } from 'vuex'
 import { GAME_SCHEMA, GAME_INFO_SCHEMA } from '../services/formSchemas'
-import { GAME_INFO_RETRIEVE_ACTION, GAME_INFO_RESET_ACTION } from '../store'
-import { notify } from '../services/utils'
+import { GAME_INFO_RETRIEVE_ACTION, GAME_INFO_RESET_ACTION, NEW_GAME_SUBMIT_ACTION } from '../store'
 
 export default {
-  name: 'PageIndex',
+  name: 'Create',
   components: {
     DynamicForm: () => import('../components/DynamicForm.vue'),
   },
-  data() {
-    return {
-      GAME_SCHEMA,
-      GAME_INFO_SCHEMA,
-      GAME_INFO_RETRIEVE_ACTION,
-      GAME_INFO_RESET_ACTION,
-    }
-  },
+  data: () => ({
+    GAME_SCHEMA,
+    GAME_INFO_SCHEMA,
+  }),
   methods: {
     handleGameInfo(formModels) {
       this.$store.dispatch(GAME_INFO_RETRIEVE_ACTION, formModels.url)
     },
     handleGameSubmit(formModels) {
-      this.$router.push('/')
-      notify({
-        message: `Success! You submitted a new game: ${formModels.gameName}`,
-      })
+      this.$store.dispatch(NEW_GAME_SUBMIT_ACTION, formModels)
     },
     resetInfoForm() {
       this.$refs.infoForm.$refs.dynamicForm.reset()
@@ -40,7 +32,7 @@ export default {
 
 <template>
   <q-page class="row justify-center items-start">
-    <div class="column col-11 col-sm-6 q-py-md">
+    <div class="column col-11 col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-10 q-py-md">
       <q-toolbar class="col-1 bg-secondary text-white q-pa-sm q-pl-md top-left-round top-right-round">
         <q-toolbar-title>Submit a Game</q-toolbar-title>
       </q-toolbar>
@@ -68,21 +60,7 @@ export default {
 </template>
 
 <style lang="sass" scoped>
-  @import '../css/quasar.variables'
-
-  .top-left-round
-    border-top-left-radius: .25rem
-  .top-right-round
-    border-top-right-radius: .25rem
-
-  .border-all
-    border: 1px solid $separator-color
-    border-radius: .25rem
-
-  .no-top-left-border
-    border-top-left-radius: 0
-  .no-top-right-border
-    border-top-right-radius: 0
+  @import '../css/app.sass'
 
   .meld-bottom
     border-bottom: 0 solid transparent

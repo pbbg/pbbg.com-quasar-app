@@ -1,17 +1,7 @@
-export const PERSON_SCHEMA = 'person'
-export const USER_SCHEMA = 'user'
 export const GAME_SCHEMA = 'game'
 export const GAME_INFO_SCHEMA = 'gameInfo'
-
-const person = {
-  name: {},
-  email: {},
-}
-
-const user = {
-  ...person,
-  password: {},
-}
+export const USER_LOGIN_SCHEMA = 'userLogin'
+export const USER_REGISTER_SCHEMA = 'userRegister'
 
 const game = {
   gameName: {},
@@ -23,17 +13,25 @@ const gameInfo = {
   gameUrl: {},
 }
 
+const userLogin = {
+  email: {},
+  password: {},
+}
+
+const userRegister = {
+  name: {},
+  email: {},
+  password: {},
+  confirmPassword: {},
+}
+
 const formSchemas = {
-  [PERSON_SCHEMA]: person,
-  [USER_SCHEMA]: user,
   [GAME_SCHEMA]: game,
   [GAME_INFO_SCHEMA]: gameInfo,
+  [USER_LOGIN_SCHEMA]: userLogin,
+  [USER_REGISTER_SCHEMA]: userRegister,
 }
 
-export function schema(schemaName) {
+export const schema = schemaName => {
   return formSchemas[schemaName] ? formSchemas[schemaName] : throw new Error(`Form Schema ${schemaName} is not defined`)
-}
-
-export default () => {
-  return formSchemas
 }

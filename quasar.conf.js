@@ -80,13 +80,14 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
-      https: false,
+      https: true,
       port: 8080,
       open: true, // opens browser window automatically
       watchOptions: {
         aggregateTimeout: 100,
         poll: 1000,
       },
+      historyApiFallback: true,
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
@@ -123,6 +124,7 @@ module.exports = function (/* ctx */) {
       plugins: [
         'Notify',
         'Loading',
+        'LocalStorage',
       ],
     },
 

@@ -1,17 +1,19 @@
 <script>
-import { NAV_ICON_CLICKED_ACTION } from '../store'
+import { mapState } from 'vuex'
+import { navLinks } from '../router'
+import { NAV_ICON_PRESS_ACTION } from '../store'
 
 export default {
-  props: {
-    links: {
-      type: Array,
-      required: true,
-    },
+  components: {
+    ProfileControl: () => import('./ProfileControl.vue'),
+    LoginControl: () => import('./LoginControl.vue'),
   },
-  data() {
-    return {
-      NAV_ICON_CLICKED_ACTION,
-    }
+  data: () => ({
+    navLinks,
+    NAV_ICON_PRESS_ACTION,
+  }),
+  computed: {
+    ...mapState(['user']),
   },
 }
 </script>
@@ -29,7 +31,7 @@ export default {
         round
         icon="menu"
         aria-label="Menu"
-        @click="$store.dispatch(NAV_ICON_CLICKED_ACTION)"
+        @click="$store.dispatch(NAV_ICON_PRESS_ACTION)"
       />
 
       <q-toolbar-title
@@ -52,7 +54,7 @@ export default {
       />
       <div class="gt-sm q-pl-sm">
         <q-btn
-          v-for="link of links"
+          v-for="link of navLinks"
           :key="link.id"
           stretch
           flat
@@ -64,6 +66,14 @@ export default {
         />
       </div>
       <q-space />
+      <login-control
+        v-if="!user"
+        class="gt-sm"
+      />
+      <profile-control
+        v-else
+        class="gt-sm"
+      />
     </q-toolbar>
   </q-header>
 </template>

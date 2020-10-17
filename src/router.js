@@ -1,16 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import auth from './services/auth'
+import store, { USER_LOGOUT_PRESS_ACTION } from './store'
 
 Vue.use(VueRouter)
 
-/*
- * If not building with SSR mode, you can
- * directly export the Router instantiation;
- *
- * The function below can be async too; either use
- * async/await or return a Promise which resolves
- * with the Router instance.
- */
+const requiresAuth = (to, from, next) => {
+  if (!auth.loggedIn()) {
+    next({
+      path: '/login',
+      query: { redirect: to.fullPath },
+    })
+  } else {
+    next()
+  }
+}
 
 const routes = [
   {
@@ -19,31 +23,38 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Index.vue') },
       { path: '/games/create', component: () => import('pages/Create.vue') },
+      { path: '/login', component: () => import('pages/Login.vue') },
+      { path: '/logout',
+        beforeEnter: async (to, from, next) => {
+          await store.dispatch(USER_LOGOUT_PRESS_ACTION)
+          next('/')
+        },
+      },
+      { path: '/register', component: () => import('pages/Register.vue') },
     ],
   },
-
-  // Always leave this as last one,
-  // but you can also remove it
+  {
+    path: '/dashboard',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Dashboard.vue') },
+    ],
+    beforeEnter: requiresAuth,
+  },
   {
     path: '*',
     component: () => import('pages/Error404.vue'),
   },
 ]
 
-export default function (/* { store, ssrContext } */) {
-  const Router = new VueRouter({
-    scrollBehavior: () => ({ x: 0, y: 0 }),
-    routes,
+const router = new VueRouter({
+  scrollBehavior: () => ({ x: 0, y: 0 }),
+  routes,
+  mode: process.env.VUE_ROUTER_MODE,
+  base: process.env.VUE_ROUTER_BASE,
+})
 
-    // Leave these as they are and change in quasar.conf.js instead!
-    // quasar.conf.js -> build -> vueRouterMode
-    // quasar.conf.js -> build -> publicPath
-    mode: process.env.VUE_ROUTER_MODE,
-    base: process.env.VUE_ROUTER_BASE,
-  })
-
-  return Router
-}
+export default router
 
 export const navLinks = [
   {

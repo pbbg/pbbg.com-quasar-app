@@ -16,9 +16,12 @@ jobs:
         with:
           config-file: cypress.json
           start: yarn start
-          wait-on: 'http://localhost:8080'
+          wait-on: 'https://localhost:8080'
           browser: chrome
           headless: true
+        env:
+          # This allows self-signed ssl certs to work so UATs run against https
+          NODE_TLS_REJECT_UNAUTHORIZED: 0
       - name: Archive test screenshots
         uses: actions/upload-artifact@v1
         with:

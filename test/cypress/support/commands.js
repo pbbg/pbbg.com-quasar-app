@@ -23,7 +23,7 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
-import { mockAlgolia } from '../util.js'
+import {mockAlgolia, uniqueGameName, uniqueGameUrl} from '../util.js'
 
 Cypress.Commands.add('setupAlgoliaStub', () => {
   mockAlgolia()
@@ -92,15 +92,18 @@ Cypress.Commands.add('logout', (name = null) => {
 })
 
 Cypress.Commands.add('createNewGameRequest', ({ url, name, shortDescription } = { url: null, name: null, shortDescription: null }) => {
-  const gameUrl = url ? url : 'https://www.google.com'
+  const uniqueName = name ? name : uniqueGameName()
+  const gameUrl = url ? url : uniqueGameUrl(uniqueName)
+  const description = shortDescription ? shortDescription : `a big long description here about this game, ${uniqueName}, and some more text.`
+
   cy.typeIntoFormField('URL *', gameUrl)
   cy.contains('GET INFO').click()
 
   cy.contains('Stand by. Loading game data...').should('be.visible')
   cy.contains(`Data loaded for ${gameUrl}`)
 
-  cy.typeIntoFormField('Name *', name ? name : 'TestGame')
-  cy.typeIntoFormField('Short Description *', shortDescription ? shortDescription : 'a big long description here and some more text.')
+  cy.typeIntoFormField('Name *', uniqueName)
+  cy.typeIntoFormField('Short Description *', description)
   cy.contains('Save').click()
   cy.verifyHomepage()
   cy.contains('Success!').should('be.visible')

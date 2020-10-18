@@ -14,3 +14,11 @@ export function uniqueUser ({ name, email, password, confirmPassword } = { name:
     confirmPassword: confirmPassword ? confirmPassword : 'pass1234',
   }
 }
+
+export function uniqueGameName (specificDateNow) {
+  return 'game-' + (specificDateNow ? specificDateNow : Date.now().toString())
+}
+
+export function uniqueGameUrl (url) {
+  return `https://www.${url ? url : uniqueGameName()}.com`
+}

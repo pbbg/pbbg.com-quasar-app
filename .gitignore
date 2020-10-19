@@ -41,4 +41,5 @@ test/cypress/videos/**/*
 
 # Hidden files
 .env*
+!.env.example
 cypress.env.json

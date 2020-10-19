@@ -11,6 +11,8 @@ You need to have a version of Yarn that is >= 1.21.1 installed on the host machi
 2. Clone and `cd` into your new fork.
 3. Create a new branch from `master` with `git checkout -b someNewFeatureOrBugfixBranch`
 4. Install packages by running `yarn` command.
+5. Copy `.env.example` as `.env`.
+6. Go into your forked repo > Settings > Secrets and add a new *Secret*:  `API_BASE_URL` and make the value `https://dev-api.pbbg.com`.
 
 ### Commands
 * `yarn start` build app for production and serve on `http://localhost:8080` *purpose is for startup on production server*
@@ -47,15 +49,13 @@ default when developing locally (and also when Github Actions runs on your forke
 stubbed when your PR runs the Github Actions workflow in the source repo.
 
 For some development, you may need to have the actual integration working and functional. For this, you'll need to
-setup some environment variables at the root of your project:
-* Create an `.env` file in the root of your project and paste:
+create some new environment variables:
+* Add these to your `.env` file:
 ```
-# No quotes needed around string values here
 ALGOLIA_APP_ID=
 ALGOLIA_KEY=
-
 ```
-* In the same place, create a `cypress.env.json` file and paste:
+* In the root of your project create a `cypress.env.json` file and paste this:
 ```
 {
   "ALGOLIA_APP_ID": "",
@@ -76,6 +76,8 @@ the same values.
 ### Test Environment
 Development Front-End: [https://dev.pbbg.com/](https://dev.pbbg.com/)
 Development API: [https://dev-api.pbbg.com/](https://dev-api.pbbg.com/)
+API Swagger Docs [https://app.swaggerhub.com/apis-docs/pbbg/api.pbbg.com/0.1.3#/](https://app.swaggerhub.com/apis-docs/pbbg/api.pbbg.com/0.1.3#/)
+> Note as updates are made to the api.pbbg.com project the hash will increment from 0.1.3 > 0.1.4 > etc. So, always ensure you are viewing the latest docs.
 
 ## Licenses
 Content is released under [GNU GPL v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).

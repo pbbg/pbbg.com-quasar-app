@@ -6,6 +6,7 @@ jobs:
     env:
       ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
       ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
+      API_BASE_URL: ${{ secrets.API_BASE_URL }}
       # This allows self-signed ssl certs to work so UATs run against https
       NODE_TLS_REJECT_UNAUTHORIZED: 0
     steps:

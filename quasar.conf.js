@@ -51,6 +51,7 @@ module.exports = function (/* ctx */) {
       env: {
         ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
         ALGOLIA_KEY: process.env.ALGOLIA_KEY,
+        API_BASE_URL: process.env.API_BASE_URL,
       },
 
       // Add dependencies for transpiling with Babel (Array of string/regex)

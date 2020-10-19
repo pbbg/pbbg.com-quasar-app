@@ -4,8 +4,11 @@ jobs:
   cypress-run:
     runs-on: ubuntu-16.04
     env:
-      ALGOLIA_APP_ID: TF6EHQUG2K
-      ALGOLIA_KEY: 3ab2216a85ee66f3ecd52c90c1f690fc
+      ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+      ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
+      API_BASE_URL: ${{ secrets.API_BASE_URL }}
+      # This allows self-signed ssl certs to work so UATs run against https
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
     steps:
       - name: Checkout and Lint
         uses: actions/checkout@v1
@@ -19,9 +22,6 @@ jobs:
           wait-on: 'https://localhost:8080'
           browser: chrome
           headless: true
-        env:
-          # This allows self-signed ssl certs to work so UATs run against https
-          NODE_TLS_REJECT_UNAUTHORIZED: 0
       - name: Archive test screenshots
         uses: actions/upload-artifact@v1
         with:

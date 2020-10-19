@@ -8,8 +8,4 @@ describe('Home', function () {
     cy.title().should('include', 'pbbg.com')
     cy.verifyHomepage()
   })
-
-  it('should see some test search results', () => {
-    cy.contains('Test Algolia Search Results').should('be.visible')
-  })
 })

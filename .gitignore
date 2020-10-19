@@ -43,4 +43,3 @@ test/cypress/videos/**/*
 .env*
 !.env.example
 cypress.env.json
-!cypress.env.json.example

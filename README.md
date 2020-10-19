@@ -11,21 +11,8 @@ You need to have a version of Yarn that is >= 1.21.1 installed on the host machi
 2. Clone and `cd` into your new fork.
 3. Create a new branch from `master` with `git checkout -b someNewFeatureOrBugfixBranch`
 4. Install packages by running `yarn` command.
-
-### Set environment variables
-* Copy the `.env.example` and rename to `.env`. This lets you hit the real dev Algolia instance when running locally.
-
-* Copy the `cypress.env.json.example` and rename to `cypress.env.json`. This allows the UAT tests to correctly stub
-Algolia with mock data.
-
-* Copy the values for the `ALGOLIA_APP_ID` and `ALGOLIA_KEY` from the `/.github/workflows/main.yml` file and paste into
-both of your new files.
-
-> Curious as to why these values are checked into source control? Turns out Github Actions currently doesn't support sharing
-> secrets to forked repositories (i.e. for contributors making Pull Requests). Without this, your Github Actions in your
-> forked repository would always fail. Fortunately, these values are to a development instance of Algolia that is an
-> acceptable place to be publicly viewable. The production Algolia credentials can still be protected via the release
-> process in the source repository.
+5. Copy `.env.example` as `.env`.
+6. Go into your forked repo > Settings > Secrets and add a new *Secret*:  `API_BASE_URL` and make the value `https://dev-api.pbbg.com`.
 
 ### Commands
 * `yarn start` build app for production and serve on `http://localhost:8080` *purpose is for startup on production server*
@@ -48,9 +35,49 @@ both of your new files.
 > Longer Contributing document on how to offer feedback, our standards, responsibilities, code of conduct, and
 >enforcement can be found in [contributing guidelines](/CONTRIBUTING.md)
 
+### Interacting with the database
+Currently, local development is not running it's own local database/api. The http requests are actually hitting the real
+dev API (https://dev-api.pbbg.com). This is partially because we want to treat the API as a truly third-party service.
+
+Keep this in mind as you write UATs - for example, if the API prevents duplicate fields and you rerun a test that
+creates something with those fields then you are likely to get 422 responses from the collisions. (See the `uniqueUser`
+and the `uniqueGameName` utility methods in the UAT tests for examples of how to work around this limitation).
+
+### Optional - connecting to the Algolia instance for search
+The integration with Algolia is rate limited by use and per level of payment plan, and therefore it is stubbed out by
+default when developing locally (and also when Github Actions runs on your forked repo branch). However, it is *NOT*
+stubbed when your PR runs the Github Actions workflow in the source repo.
+
+For some development, you may need to have the actual integration working and functional. For this, you'll need to
+create some new environment variables:
+* Add these to your `.env` file:
+```
+ALGOLIA_APP_ID=
+ALGOLIA_KEY=
+```
+* In the root of your project create a `cypress.env.json` file and paste this:
+```
+{
+  "ALGOLIA_APP_ID": "",
+  "ALGOLIA_KEY": ""
+}
+
+```
+* Ask a project contributor or @FoohonPie in Discord for the values to plug into these files.
+* Lastly, for your forked repo's Github Action (which runs UATs like they will run when you create your PR) you will
+need to go into your Forked Repo's settings > Secrets and add one for ALGOLIA_APP_ID and another for ALGOLIA_KEY using
+the same values.
+
+> Github Actions currently doesn't support sharing secrets to forked repositories (i.e. for contributors making Pull
+> Requests). Without the app_id and keys for Algolia, your Github Actions in your will run UATs against the Algolia
+> stub, the same as when you run them locally. However, they will use the "real thing" when your PR goes through the
+> Github Actions workflow in the source repo.
+
 ### Test Environment
- After developing locally and going through the normal Pull Request process to get your changes added, you should
- be able to see the updated code hosted on the test environment at [https://dev.pbbg.com/](https://dev.pbbg.com/).
+Development Front-End: [https://dev.pbbg.com/](https://dev.pbbg.com/)
+Development API: [https://dev-api.pbbg.com/](https://dev-api.pbbg.com/)
+API Swagger Docs [https://app.swaggerhub.com/apis-docs/pbbg/api.pbbg.com/0.1.3#/](https://app.swaggerhub.com/apis-docs/pbbg/api.pbbg.com/0.1.3#/)
+> Note as updates are made to the api.pbbg.com project the hash will increment from 0.1.3 > 0.1.4 > etc. So, always ensure you are viewing the latest docs.
 
 ## Licenses
 Content is released under [GNU GPL v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).

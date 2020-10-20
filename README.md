@@ -79,5 +79,9 @@ Development API: [https://dev-api.pbbg.com/](https://dev-api.pbbg.com/)
 API Swagger Docs [https://app.swaggerhub.com/apis-docs/pbbg/api.pbbg.com/0.1.3#/](https://app.swaggerhub.com/apis-docs/pbbg/api.pbbg.com/0.1.3#/)
 > Note as updates are made to the api.pbbg.com project the hash will increment from 0.1.3 > 0.1.4 > etc. So, always ensure you are viewing the latest docs.
 
+## FAQ/issues
+* For Windows 10 development environment I cannot get cypress to run!
+> Answer: Try running `npx cypress install --force` which will reinstall cypress and then trying the normal UAT test command, `yarn test:e2e` while the app is already running.
+
 ## Licenses
 Content is released under [GNU GPL v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).

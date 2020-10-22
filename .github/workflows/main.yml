@@ -3,18 +3,32 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-16.04
+    strategy:
+      matrix:
+        node: [ 10, 12 ]
+    name: Build, Lint, and UATs on Node v${{ matrix.node }}
     env:
       ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
       ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
       API_BASE_URL: ${{ secrets.API_BASE_URL }}
       # This allows self-signed ssl certs to work so UATs run against https
       NODE_TLS_REJECT_UNAUTHORIZED: 0
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Checkout and Lint
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node -v
+
+      - name: Checkout
         uses: actions/checkout@v1
-      - name: Run ESLint
+
+      - name: Lint
         run: yarn && yarn lint
-      - name: Build app and Run UATs
+
+      - name: UATs
         uses: cypress-io/github-action@v2
         with:
           config-file: cypress.json
@@ -22,9 +36,5 @@ jobs:
           wait-on: 'https://localhost:8080'
           browser: chrome
           headless: true
-      - name: Archive test screenshots
-        uses: actions/upload-artifact@v1
-        with:
-          name: screenshots
-          path: test/cypress/screenshots
-        if: ${{ failure() }}
+          record: true
+          tag: node-${{ matrix.node }}

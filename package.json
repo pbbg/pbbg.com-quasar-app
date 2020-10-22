@@ -16,7 +16,7 @@
     "test:e2e:ci": "cypress run --headless --browser chrome"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.9.7",
     "axios": "^0.18.1",
     "core-js": "^3.6.5",
     "quasar": "^1.0.0",

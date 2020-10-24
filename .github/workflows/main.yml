@@ -29,7 +29,17 @@ jobs:
       - name: Lint
         run: yarn && yarn lint
 
-      - name: UATs
+      - name: Contributor UATs
+        uses: cypress-io/github-action@v2
+        with:
+          config-file: cypress.json
+          start: yarn start
+          wait-on: 'https://localhost:8080'
+          browser: chrome
+          headless: true
+        if: github.repository != 'pbbg/pbbg.com' && github.event_name == 'push'
+
+      - name: Recorded UATs
         uses: cypress-io/github-action@v2
         with:
           config-file: cypress.json
@@ -39,3 +49,4 @@ jobs:
           headless: true
           record: true
           tag: node-${{ matrix.node }}
+        if: github.repository == 'pbbg/pbbg.com' && github.event_name == 'push'

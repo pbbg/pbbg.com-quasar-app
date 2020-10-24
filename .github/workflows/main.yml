@@ -14,6 +14,7 @@ jobs:
       # This allows self-signed ssl certs to work so UATs run against https
       NODE_TLS_REJECT_UNAUTHORIZED: 0
       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Setup Node

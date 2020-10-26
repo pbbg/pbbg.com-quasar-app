@@ -87,7 +87,9 @@ Cypress.Commands.add('loginUser', ({ email, password }) => {
 })
 
 Cypress.Commands.add('logout', (name = null) => {
-  cy.getAriaLabel(name).first().click() //there are two aria labels because quasar applies to any button inside a btn-dropdown
+  cy.get('header').within(() => {
+    cy.contains(name).click()
+  })
   cy.contains('Logout').click()
 })
 

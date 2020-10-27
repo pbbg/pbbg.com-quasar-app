@@ -24,6 +24,8 @@ You need to have a version of Yarn that is >= 1.21.1 installed on the host machi
 * `yarn lint:fix` lint the files for warnings and errors and try to automatically fix
 * `yarn test:e2e` open the UAT tool, Cypress, to select test files to run in the browser **Requires app to be running**
 * `yarn test:e2e:ci` run the UAT tests in headless browser mode (automatically run when you make a Pull Request) **Requires app to be running**
+> When running from your forked repository the Cypress Tests simply run, but when you create your Pull Request
+> they will be run and video/screenshots recorded and sent to the cypress.io dashboard
 
 ### Contributing and Pull Requests
 1. We *highly* encourage [short, concise git commit messages](https://chris.beams.io/posts/git-commit/).
@@ -82,6 +84,8 @@ API Swagger Docs [https://app.swaggerhub.com/apis-docs/pbbg/api.pbbg.com/0.1.3#/
 ## FAQ/issues
 * For Windows 10 development environment I cannot get cypress to run!
 > Answer: Try running `npx cypress install --force` which will reinstall cypress and then trying the normal UAT test command, `yarn test:e2e` while the app is already running.
+* UAT tests are failing when I create my PR!
+> Answer: Try checking the [Cypress.io Dashboard](https://dashboard.cypress.io/projects/befrjn/runs?branches=%5B%5D&committers=%5B%5D&flaky=%5B%5D&page=1&status=%5B%5D&tags=%5B%5D&timeRange=%7B%22startDate%22%3A%221970-01-01%22%2C%22endDate%22%3A%222038-01-19%22%7D) and viewing the screenshots or videos of the failing test to troubleshoot what went wrong.
 
 ## Licenses
 Content is released under [GNU GPL v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).

@@ -10,7 +10,7 @@ export default {
   async registerUser({ name, email, password }) {
     try {
       const response = await Vue.prototype.$axios.post('/register', { name, email, password })
-      this.setAxiosAuthHeader(response.data.token)
+      this.setAxiosAuthHeader(response.data.data.token)
       notify(messages.register(name))
     } catch(error) {
       let errorMessage = errorMessageFromApiResponse(error)
@@ -21,9 +21,9 @@ export default {
   async login({ email, password }) {
     try {
       const response = await Vue.prototype.$axios.post('/login', { email, password })
-      this.setAxiosAuthHeader(response.data.success.token)
+      this.setAxiosAuthHeader(response.data.data.token)
     } catch(error) {
-      if (error.response.data && error.response.data.error === 'Unauthorized') {
+      if (error.response.data && error.response.data.message === 'Unauthorized') {
         notify(messages.invalidLogin)
       } else {
         notify(messages.failLogin)
@@ -39,7 +39,7 @@ export default {
   async getUser() {
     try {
       const response = await Vue.prototype.$axios.get('/user')
-      return response.data
+      return response.data.data
     } catch(error) {
       notify(messages.failGetUser)
       return null

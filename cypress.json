@@ -9,7 +9,7 @@
   "supportFile": "test/cypress/support/index.js",
   "videosFolder": "test/cypress/videos",
   "testFiles": "**/*.spec.js",
-  "video": false,
   "viewportHeight": 720,
-  "viewportWidth": 1280
+  "viewportWidth": 1280,
+  "projectId": "befrjn"
 }

@@ -53,4 +53,4 @@ jobs:
           headless: true
           record: true
           tag: node-${{ matrix.node }}
-        if: github.repository == 'pbbg/pbbg.com' && github.event_name == 'pull_request'
+        if: github.repository == 'pbbg/pbbg.com' && github.event_name == 'push'

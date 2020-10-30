@@ -78,7 +78,7 @@ the same values.
 ### Test Environment
 Development Front-End: [https://dev.pbbg.com/](https://dev.pbbg.com/)
 Development API: [https://dev-api.pbbg.com/](https://dev-api.pbbg.com/)
-API Swagger Docs [https://app.swaggerhub.com/apis-docs/pbbg/api.pbbg.com/0.1.3#/](https://app.swaggerhub.com/apis-docs/pbbg/api.pbbg.com/0.1.3#/)
+API Swagger Docs [https://app.swaggerhub.com/apis-docs/pbbg/api.pbbg.com/0.1.6#/](https://app.swaggerhub.com/apis-docs/pbbg/api.pbbg.com/0.1.6#/)
 > Note as updates are made to the api.pbbg.com project the hash will increment from 0.1.3 > 0.1.4 > etc. So, always ensure you are viewing the latest docs.
 
 ## FAQ/issues

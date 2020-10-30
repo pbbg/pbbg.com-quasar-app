@@ -4,30 +4,68 @@
 body, html
   color: $secondary
 
-.smaller-h1
-  font-size: 2.25rem
-  line-height: 2.25rem
+.pbbg
+  .smaller-h1
+    font-size: 2.25rem
+    line-height: 2.25rem
 
-.top-left-round
-  border-top-left-radius: .25rem
-.top-right-round
-  border-top-right-radius: .25rem
+  .top-left-round
+    border-top-left-radius: .25rem
+  .top-right-round
+    border-top-right-radius: .25rem
 
-.border-all
-  border: 1px solid $separator-color
-  border-radius: .25rem
+  .border-all
+    border: 1px solid $separator-color
+    border-radius: .25rem
 
-.no-top-left-border
-  border-top-left-radius: 0
-.no-top-right-border
-  border-top-right-radius: 0
+  .no-top-left-border
+    border-top-left-radius: 0
+  .no-top-right-border
+    border-top-right-radius: 0
 
-.user-forms-modal
-  width: 40rem
+  .user-forms-modal
+    width: 40rem
 
-.rating-badge
-  position: absolute
-  top: -1rem
-  left: -1rem
-  color: #ffffff
-  z-index: 4
+  .rating-badge
+    position: absolute
+    top: -1rem
+    left: -1rem
+    color: #ffffff
+    z-index: 4
+
+  .full-width-column
+    width: 100%
+
+  .wide-column
+    width: 100%
+    max-width: 50rem
+
+  .slim-column
+    width: 25rem
+    max-width: 25rem
+    min-width: 25rem
+    min-height: 30rem
+
+  .meld-bottom
+    border-bottom: 0 solid transparent
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
+    padding-bottom: 0
+  .meld-top
+    border-top: 0 solid transparent
+    border-top-left-radius: 0
+    border-top-right-radius: 0
+    padding-top: 0
+
+  .single-input-style
+    display: flex
+    align-items: center
+    justify-content: space-between
+    .field-row
+      flex: 1
+    .actions
+      max-width: 8rem
+      flex: 1
+      align-self: baseline
+      height: 3.5rem
+      padding-left: .5rem

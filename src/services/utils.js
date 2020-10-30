@@ -1,4 +1,5 @@
-import { Loading } from 'quasar'
+import { Loading, date } from 'quasar'
+const { formatDate } = date
 
 export const mockGameInfoHttpRequest = async url => {
   // mocking the api request until the endpoint is implemented
@@ -51,4 +52,9 @@ export const validEmailString = value => {
 
 export const isMatchingPasswords = (pass1, pass2) => {
   return pass1.trim() === pass2.trim()
+}
+
+export const dateFromUnixTimestamp = unixTimestamp => {
+  const timestamp = unixTimestamp * 1000
+  return formatDate(parseInt(timestamp, 10), 'MMMM D YYYY')
 }

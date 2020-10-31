@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import router from './router'
-import { mockGameInfoHttpRequest, errorMessageFromApiResponse, asyncRequestWithLoader } from './services/utils'
+import {
+  mockGameInfoHttpRequest,
+  errorMessageFromApiResponse,
+  asyncRequestWithLoader,
+  dateFromUnixTimestamp,
+} from './services/utils'
 import { notify, messages } from './services/messages'
 import auth from './services/auth'
 Vue.use(Vuex)
@@ -15,16 +20,20 @@ export const USER_REGISTRATION_SUBMIT_ACTION = 'USER_REGISTRATION_SUBMIT_ACTION'
 export const USER_LOGIN_SUBMIT_ACTION = 'USER_LOGIN_SUBMIT_ACTION'
 export const USER_LOGOUT_PRESS_ACTION = 'USER_LOGOUT_PRESS_ACTION'
 export const USER_PROFILE_UPDATED_ACTION = 'USER_PROFILE_UPDATED_ACTION'
+export const INITIAL_APP_LOAD_ACTION = 'INITIAL_APP_LOAD_ACTION'
+export const NEWS_FEED_LOAD_ACTION = 'NEWS_FEED_LOAD_ACTION'
 
 const SET_NAV_DRAWER_MUTATION = 'SET_NAV_DRAWER_MUTATION'
 const RESET_INFO_MUTATION = 'RESET_INFO_MUTATION'
 const SET_INFO_MUTATION = 'SET_INFO_MUTATION'
 const SET_USER_MUTATION = 'SET_USER_MUTATION'
+const SET_FEED_MUTATION = 'SET_FEED_MUTATION'
 
 const initialState = () => ({
   navDrawerOpen: false,
   gameInfo: null,
   user: null,
+  feed: [],
 })
 
 const setValue = key => (state, val) => {
@@ -102,12 +111,24 @@ export default new Vuex.Store({
         },
       })
     },
+    async [INITIAL_APP_LOAD_ACTION]({ dispatch }) {
+      dispatch(NEWS_FEED_LOAD_ACTION)
+    },
+    async [NEWS_FEED_LOAD_ACTION]({ commit }) {
+      const feedsResponse = await Vue.prototype.$axios.get('/feeds')
+      const feedItems = feedsResponse.data.data
+      for (const item of feedItems) {
+        item.timestamp = dateFromUnixTimestamp(item.timestamp)
+      }
+      commit(SET_FEED_MUTATION, feedItems)
+    },
   },
   mutations: {
     [SET_NAV_DRAWER_MUTATION]: setValue('navDrawerOpen'),
     [RESET_INFO_MUTATION]: setValue('gameInfo'),
     [SET_INFO_MUTATION]: setValue('gameInfo'),
     [SET_USER_MUTATION]: setValue('user'),
+    [SET_FEED_MUTATION]: setValue('feed'),
   },
   getters: {},
 })

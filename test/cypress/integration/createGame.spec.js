@@ -1,4 +1,4 @@
-import { uniqueGameUrl } from '../util'
+import { uniqueGameUrl, uniqueGameName } from '../util'
 
 describe('Create Game', function () {
   beforeEach(() => {
@@ -16,7 +16,7 @@ describe('Create Game', function () {
     cy.goCreateGame()
     cy.createNewGameRequest({
       url,
-      name: 'GameOne',
+      name: uniqueGameName(),
       shortDescription: 'Game One Description',
     })
     cy.verifyHomepage()
@@ -40,7 +40,7 @@ describe('Create Game', function () {
     cy.typeIntoFormField('URL *', uniqueGameUrl())
     cy.contains('GET INFO').click()
 
-    cy.typeIntoFormField('Name *', 'TestGame')
+    cy.typeIntoFormField('Name *', uniqueGameName())
     cy.typeIntoFormField('Short Description *', 'a big long description here and some more text.')
     cy.contains('Save').click()
     cy.verifyHomepage()
@@ -56,7 +56,7 @@ describe('Create Game', function () {
 
     cy.expectHTML5ValidationMessage('text', 'Please fill out this field.')
 
-    cy.typeIntoFormField('Name *', 'TestGame')
+    cy.typeIntoFormField('Name *', uniqueGameName())
     cy.contains('Save').click()
     cy.verifyHomepage()
     cy.contains('Success!').should('be.visible')
@@ -66,7 +66,7 @@ describe('Create Game', function () {
     cy.goCreateGame()
     cy.typeIntoFormField('URL *', uniqueGameUrl())
     cy.contains('GET INFO').click()
-    cy.typeIntoFormField('Name *', 'TestGame')
+    cy.typeIntoFormField('Name *', uniqueGameName())
     cy.contains('Save').click()
 
     cy.expectHTML5ValidationMessage('textarea', 'Please fill out this field.')

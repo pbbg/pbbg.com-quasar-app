@@ -61,31 +61,3 @@ export default {
     </div>
   </q-page>
 </template>
-
-<style lang="sass" scoped>
-  @import '../css/app.sass'
-
-  .meld-bottom
-    border-bottom: 0 solid transparent
-    border-bottom-left-radius: 0
-    border-bottom-right-radius: 0
-    padding-bottom: 0
-  .meld-top
-    border-top: 0 solid transparent
-    border-top-left-radius: 0
-    border-top-right-radius: 0
-    padding-top: 0
-
-  .single-input-style /deep/
-      display: flex
-      align-items: center
-      justify-content: space-between
-      .field-row
-        flex: 1
-      .actions
-        max-width: 8rem
-        flex: 1
-        align-self: baseline
-        height: 3.5rem
-        padding-left: .5rem
-</style>

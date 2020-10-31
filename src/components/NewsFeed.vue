@@ -12,7 +12,7 @@ export default {
   <q-list
     bordered
     separator
-    class="rounded-borders relative-position"
+    class="rounded-borders relative-position feed-minimum-height"
   >
     <q-item
       v-for="(item, index) in feed"
@@ -64,9 +64,8 @@ export default {
 </template>
 
 <style lang="sass" scoped>
-.feed-minimum-size
+.feed-minimum-height
   min-height: 30rem
-  width: 25rem
 .corner-content
   line-height: 1rem
 </style>

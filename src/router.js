@@ -31,6 +31,7 @@ const routes = [
         },
       },
       { path: '/register', component: () => import('pages/Register.vue') },
+      { path: '/changelog', component: () => import('pages/Changelog.vue') },
     ],
   },
   {

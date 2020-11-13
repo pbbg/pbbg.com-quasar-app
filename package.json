@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.9.7",
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "quasar": "^1.14.1",
     "vue-instantsearch": "^1.7.0"

@@ -1,20 +1,23 @@
 <script>
 import Vue from 'vue'
-import { SearchBox, PoweredBy, Results, Index } from 'vue-instantsearch'
+import { AisSearchBox, AisPoweredBy, AisHits, AisInstantSearch } from 'vue-instantsearch'
+import algoliasearch from 'algoliasearch/lite'
 
 export default {
   name: 'InstantSearch',
   components: {
     SearchResult: () => import('./SearchResult.vue'),
-    AisIndex: Vue.component('ais-index', Index),
-    AisSearchBox: Vue.component('ais-search-box', SearchBox),
-    AisResults: Vue.component('ais-results', Results),
-    AisPoweredBy: Vue.component('ais-powered-by', PoweredBy),
+    AisInstantSearch: Vue.component('AisInstantSearch', AisInstantSearch),
+    AisSearchBox: Vue.component('AisSearchBox', AisSearchBox),
+    AisHits: Vue.component('AisHits', AisHits),
+    AisPoweredBy: Vue.component('AisPoweredBy', AisPoweredBy),
   },
   data: () => ({
-    ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
-    ALGOLIA_KEY: process.env.ALGOLIA_KEY,
     searchQuery: '',
+    searchClient: algoliasearch(
+      process.env.ALGOLIA_APP_ID,
+      process.env.ALGOLIA_KEY,
+    ),
   }),
   methods: {
     refineSearch (refine, value) {
@@ -26,9 +29,8 @@ export default {
 </script>
 
 <template>
-  <ais-index
-    :app-id="ALGOLIA_APP_ID"
-    :api-key="ALGOLIA_KEY"
+  <ais-instant-search
+    :search-client="searchClient"
     index-name="games"
   >
     <ais-search-box placeholder="Search games, tags, descriptions...">
@@ -41,7 +43,7 @@ export default {
           outlined
           input-class="text-left"
         >
-          <template v-slot:append>
+          <template #append>
             <q-icon
               v-if="searchQuery === ''"
               name="search"
@@ -57,15 +59,26 @@ export default {
       </div>
     </ais-search-box>
 
-    <ais-results>
-      <template slot-scope="{ result }">
+    <ais-hits class="empty-style-list">
+      <div
+        slot="item"
+        slot-scope="{ item }"
+      >
         <search-result
-          :result="result"
+          :result="item"
           class="q-mt-lg"
         />
-      </template>
-    </ais-results>
+      </div>
+    </ais-hits>
 
     <ais-powered-by />
-  </ais-index>
+  </ais-instant-search>
 </template>
+
+<style lang="sass" scoped>
+.empty-style-list /deep/
+  .ais-Hits-list
+    list-style: none
+    margin: 0
+    padding: 0
+</style>

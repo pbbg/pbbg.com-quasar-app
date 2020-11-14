@@ -4,4 +4,4 @@ module.exports = {
     // See https://github.com/cypress-io/eslint-plugin-cypress#rules
     'plugin:cypress/recommended',
   ],
-};
+}

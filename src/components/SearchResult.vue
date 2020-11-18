@@ -30,6 +30,7 @@ export default {
       <safe-img
         class="col-2 rounded-borders ad-square-button"
         :src="result.ad_square_button"
+        :alt="result.name + ' Game Image'"
       />
       <q-card-section class="col">
         <div class="text-h5 q-mt-sm q-mb-xs">

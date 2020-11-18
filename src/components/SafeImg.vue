@@ -7,26 +7,32 @@ export default {
     },
     timeout: {
       type: Number,
-      default: 4000,
+      default: 6000,
+    },
+    title: {
+      type: String,
+      default: '',
     },
   },
   data: () => ({
-    imageElement: null,
-    isValidUrl: false,
-    validationTimer: null,
+    isValidUrl: true,
+    timer: null,
   }),
   methods: {
-    setAsValidUrl() {
-      this.isValidUrl = true
-      this.imageElement = new window.Image()
-      this.imageElement.src = this.src
-    },
-    invalidateAfterTimeoutIfBadUrl() {
-      this.validationTimer = setTimeout(() => {
-        if (!this.imageElement.complete || !this.imageElement.naturalWidth) {
+    testImageUrl() {
+      const imageElement = new window.Image()
+      imageElement.src = this.src
+      this.timer = setTimeout(() => {
+        if (!imageElement.complete || !imageElement.naturalWidth) {
           this.isValidUrl = false
         }
       }, this.timeout)
+    },
+    initialize() {
+      window.clearTimeout(this.timer)
+      this.isValidUrl = true
+      this.timer = null
+      this.testImageUrl()
     },
   },
   watch: {
@@ -34,14 +40,13 @@ export default {
       immediate: true,
       handler(newValue) {
         if (newValue) {
-          this.setAsValidUrl()
-          this.invalidateAfterTimeoutIfBadUrl()
+          this.initialize()
         }
       },
     },
   },
   beforeDestroy: function() {
-    window.clearTimeout(this.validationTimer)
+    window.clearTimeout(this.timer)
   },
 }
 </script>
@@ -50,7 +55,9 @@ export default {
   <div>
     <q-img
       :src="src"
+      :alt="title"
       @error="isValidUrl = false"
+      native-context-menu
       class="full-width full-height"
     >
       <template #loading>
@@ -61,9 +68,15 @@ export default {
       </template>
       <div
         v-if="!isValidUrl"
-        class="absolute-full flex flex-center bg-negative text-white"
+        class="absolute-full flex flex-center bg-grey-4 text-grey-8"
       >
-        Cannot load image
+        <div class="text-center">
+          Cannot load <br><a
+            :href="src"
+            target="_blank"
+            rel="noopener noreferrer"
+          >image url</a>
+        </div>
       </div>
     </q-img>
   </div>

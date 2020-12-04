@@ -19,7 +19,6 @@ module.exports = function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
-
       'axios',
     ],
 
@@ -52,10 +51,6 @@ module.exports = function (/* ctx */) {
         ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
         ALGOLIA_KEY: process.env.ALGOLIA_KEY,
         API_BASE_URL: process.env.API_BASE_URL,
-      },
-
-      sassLoaderOptions: {
-        prependData: '@import "./src/css/app.sass";',
       },
 
       // Add dependencies for transpiling with Babel (Array of string/regex)

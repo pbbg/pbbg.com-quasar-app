@@ -75,8 +75,8 @@ export default {
   </ais-instant-search>
 </template>
 
-<style lang="sass" scoped>
-.empty-style-list /deep/
+<style lang="sass">
+.empty-style-list
   .ais-Hits-list
     list-style: none
     margin: 0

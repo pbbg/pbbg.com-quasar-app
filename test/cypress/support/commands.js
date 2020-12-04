@@ -48,7 +48,7 @@ Cypress.Commands.add('goLogin', () => {
 Cypress.Commands.add('loginFormExists', () => {
   cy.contains('Email *').should('be.visible')
   cy.contains('Password *').should('be.visible')
-  cy.contains('Name *').should('not.be.visible')
+  cy.contains('Name *').should('not.exist')
 })
 
 Cypress.Commands.add('registerFormExists', () => {
@@ -63,7 +63,7 @@ Cypress.Commands.add('verifyHomepage', () => {
 })
 
 Cypress.Commands.add('verifyNotHomepage', () => {
-  cy.contains('The PBBG Directory').should('not.be.visible')
+  cy.contains('The PBBG Directory').should('not.exist')
 })
 
 Cypress.Commands.add('verifyDashboardPage', () => {

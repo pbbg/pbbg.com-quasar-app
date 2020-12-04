@@ -7,6 +7,9 @@
 // https://quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
 
+const CompressionPlugin = require('compression-webpack-plugin')
+const zlib = require('zlib')
+
 module.exports = function (/* ctx */) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
@@ -75,6 +78,29 @@ module.exports = function (/* ctx */) {
           loader: 'eslint-loader',
           exclude: /node_modules/,
         })
+
+        // fallback to gzip compression for clients that don't support brotli
+        cfg.plugins.push(new CompressionPlugin({
+          filename: '[path].gz',
+          algorithm: 'gzip',
+          test: /\.(js|css|html)$/,
+          // threshold: 10240,  // commented out so that all code splitting files are compressed
+          minRatio: 0.8,
+        }))
+
+        // brotli compression at highest quality
+        cfg.plugins.push(new CompressionPlugin({
+          filename: '[path].br',
+          algorithm: 'brotliCompress',
+          test: /\.(js|css|html|svg)$/,
+          compressionOptions: {
+            params: {
+              [zlib.constants.BROTLI_PARAM_QUALITY]: 11,
+            },
+          },
+          // threshold: 10240,  // commented out so that all code splitting files are compressed
+          minRatio: 0.8,
+        }))
       },
     },
 

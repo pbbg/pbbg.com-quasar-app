@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.9.10",
-    "algoliasearch": "^4.8.2",
+    "algoliasearch": "^4.8.3",
     "axios": "^0.21.0",
     "core-js": "^3.8.0",
     "quasar": "^1.14.5",

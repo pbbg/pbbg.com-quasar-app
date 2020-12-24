@@ -20,7 +20,7 @@
     "algoliasearch": "^4.8.2",
     "axios": "^0.21.0",
     "core-js": "^3.8.0",
-    "quasar": "^1.14.5",
+    "quasar": "^1.14.6",
     "vue-instantsearch": "^3.4.2"
   },
   "devDependencies": {

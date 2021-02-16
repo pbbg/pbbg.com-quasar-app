@@ -1,3 +1,7 @@
+THIS REPO HAS BEEN DEPRECATED.
+
+It is being kept for reference now here at https://github.com/pbbg/pbbg.com-quasar-app.  Work for pbbg.com will continue at https://github.com/pbbg/pbbg.com
+
 [![Actions Status](https://github.com/foohonpie/pbbg.com/workflows/main/badge.svg)](https://github.com/foohonpie/pbbg.com/actions)
 
 # pbbg.com Website (pbbg.com)
